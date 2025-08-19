@@ -366,37 +366,41 @@ export default function BusinessManagerPage() {
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center reveal" ref={addToRefs}>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-                Lo que dicen <span className="gradient-text">nuestros clientes</span>
+                Qué dicen las <span className="gradient-text">pymes</span> que usan BusinessManager
               </h2>
               <p className="mt-4 text-lg text-gray-400">
-                Empresas de diversos sectores han transformado su gestión con BusinessManager.
+                Casos reales de rubros bien distintos en Argentina.
               </p>
             </div>
+
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               <TestimonialCard
-                quote="BusinessManager ha revolucionado la forma en que gestionamos nuestro inventario. Ahora tenemos control total y en tiempo real."
-                author="María Rodríguez"
-                company="Distribuidora Tecnológica"
+                quote="Teníamos precios y stock repartidos entre Excel y el grupo de WhatsApp. Con BusinessManager unificamos todo, bajaron fuerte los faltantes y la reposición sale sola. Nos ahorra horas todos los días."
+                author="Mariana A."
+                company="Ferretería y construcción"
                 delay={0}
                 addToRefs={addToRefs}
               />
+
               <TestimonialCard
-                quote="La facilidad para generar reportes nos permite tomar decisiones estratégicas basadas en datos concretos. Imprescindible."
-                author="Carlos Méndez"
-                company="Retail Innovación"
+                quote="Pasamos de papelitos y planillas a órdenes de producción, compras e insumos en un mismo lugar. Ahora vemos márgenes por trabajo y cuándo nos conviene producir. Nos ordenó la fábrica."
+                author="Sergio P."
+                company="Taller y fabricación"
                 delay={0.2}
                 addToRefs={addToRefs}
               />
+
               <TestimonialCard
-                quote="El módulo de facturación electrónica nos ha ahorrado incontables horas y ha eliminado errores en nuestros procesos contables."
-                author="Laura Sánchez"
-                company="Consultora Financiera"
+                quote="Tenemos varias cajas y distintas cotizaciones durante el día. Ahora armamos cajas, billeteras virtuales y bancos, hacemos el arqueo en dos clics y vemos el spread de cada operación. Queda todo registrado y el cierre de turno sale sin drama."
+                author="Gaston M."
+                company="Financiera minorista"
                 delay={0.4}
                 addToRefs={addToRefs}
               />
             </div>
           </div>
         </section>
+
 
         {/* CTA Section */}
         <section className="py-20 relative overflow-hidden">
