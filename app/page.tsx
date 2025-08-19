@@ -22,6 +22,7 @@ import {
 } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 export default function BrocoSolutionsLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -85,12 +86,13 @@ export default function BrocoSolutionsLanding() {
       {/* NAV: barra + dropdown mobile */}
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
         <div className="glass-nav inline-flex items-center gap-6 px-6 py-3 rounded-full">
-          {/* Broco ahora es un botón que scrollea al inicio */}
           <button
             onClick={() => scrollToSection("inicio")}
-            className="text-lg font-bold neon-text hover:text-[#7F5AF0] transition-colors"
+            className="flex items-center gap-3 hover:opacity-90 transition"
+            aria-label="Ir al inicio"
           >
-            Broco
+            <Image src="/brand/bs-mark-neg.svg" alt="Broco" width={28} height={28} priority />
+            <span className="text-lg font-bold">Broco</span>
           </button>
 
           {/* Links desktop */}
@@ -402,7 +404,10 @@ export default function BrocoSolutionsLanding() {
       <footer className="border-t border-white/10 py-12">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-2xl font-bold neon-text mb-4 md:mb-0">Broco Solutions</div>
+            <div className="flex items-center gap-3 mb-4 md:mb-0">
+              <Image src="/brand/bs-mark-neg.svg" alt="Broco Solutions" width={24} height={24} />
+              <span className="text-2xl font-bold neon-text">Broco Solutions</span>
+            </div>
             <div className="flex items-center gap-6 mb-4 md:mb-0">
               <div className="flex gap-4">
                 {/* Íconos sociales */}

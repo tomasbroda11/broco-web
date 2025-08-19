@@ -21,6 +21,7 @@ import {
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export default function BusinessManagerPage() {
   // Referencia para animaciones de scroll
@@ -106,8 +107,9 @@ export default function BusinessManagerPage() {
           <button
             onClick={() => scrollToSection("hero")}
             className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer flex-shrink-0"
+            aria-label="Ir al inicio"
           >
-            <Layers className="h-6 w-6 text-primary-blue" />
+            <Image src="/brand/bm-mark-neg.svg" alt="BusinessManager" width={28} height={28} />
             <span
               className="text-lg lg:text-xl font-bold tracking-wider"
               style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
@@ -518,7 +520,7 @@ export default function BusinessManagerPage() {
               onClick={() => scrollToSection("hero")}
               className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
             >
-              <Layers className="h-6 w-6 text-primary-blue" />
+              <Image src="/brand/bm-mark-neg.svg" alt="BusinessManager" width={24} height={24} />
               <span
                 className="text-xl font-bold tracking-wider"
                 style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
