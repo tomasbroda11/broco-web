@@ -101,8 +101,14 @@ export default function BusinessManagerPage() {
 
       {/* Floating Navigation */}
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-        {/* pill del navbar (solo lo que se ve siempre) */}
-        <div className="glass-nav inline-flex items-center gap-4 px-4 lg:px-8 py-3 rounded-full">
+        <div className="
+            glass-nav
+            flex lg:inline-flex items-center rounded-full
+            px-4 lg:px-8 py-3
+            w-[92vw] lg:w-auto
+            justify-between lg:justify-start
+            gap-0 lg:gap-4
+          ">
           {/* Logo */}
           <button
             onClick={() => scrollToSection("hero")}
@@ -129,7 +135,7 @@ export default function BusinessManagerPage() {
           {/* CTA desktop */}
           <div className="hidden lg:block ml-auto">
             <Button
-              className="gradient-primary hover:opacity-90 transition-opacity text-sm px-6 py-2"
+              className="gradient-primary hover:opacity-90 transition-opacity text-sm px-6 py-2 rounded-full"
               onClick={() => openWhatsApp("Hola! Me interesa solicitar una demo de BusinessManager")}
             >
               Solicitar Demo
@@ -137,45 +143,29 @@ export default function BusinessManagerPage() {
           </div>
 
           {/* Hamburguesa mobile */}
-          <button className="lg:hidden ml-auto" onClick={() => setIsMenuOpen((o) => !o)}>
+          <button
+            className="lg:hidden p-2 rounded-md hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+            onClick={() => setIsMenuOpen(o => !o)}
+            aria-label="Abrir menú"
+          >
             <Menu className="h-5 w-5" />
           </button>
         </div>
 
-        {/* Dropdown mobile - fuera del pill para evitar el círculo */}
+        {/* Dropdown mobile */}
         <div
           className={`lg:hidden transition-all duration-200 overflow-hidden mt-2 rounded-2xl glass-nav ${
             isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
           }`}
         >
           <div className="flex flex-col px-4 py-3 gap-2">
-            <button
-              onClick={() => { scrollToSection("features"); setIsMenuOpen(false); }}
-              className="py-2 text-left hover:text-[#7F5AF0]"
-            >
-              Características
-            </button>
-            <button
-              onClick={() => { scrollToSection("benefits"); setIsMenuOpen(false); }}
-              className="py-2 text-left hover:text-[#7F5AF0]"
-            >
-              Beneficios
-            </button>
-            <button
-              onClick={() => { scrollToSection("testimonials"); setIsMenuOpen(false); }}
-              className="py-2 text-left hover:text-[#7F5AF0]"
-            >
-              Testimonios
-            </button>
-            <button
-              onClick={() => { scrollToSection("pricing"); setIsMenuOpen(false); }}
-              className="py-2 text-left hover:text-[#7F5AF0]"
-            >
-              Planes
-            </button>
+            <button onClick={() => { scrollToSection("features"); setIsMenuOpen(false); }} className="py-2 text-left hover:text-[#7F5AF0]">Características</button>
+            <button onClick={() => { scrollToSection("benefits"); setIsMenuOpen(false); }} className="py-2 text-left hover:text-[#7F5AF0]">Beneficios</button>
+            <button onClick={() => { scrollToSection("testimonials"); setIsMenuOpen(false); }} className="py-2 text-left hover:text-[#7F5AF0]">Testimonios</button>
+            <button onClick={() => { scrollToSection("pricing"); setIsMenuOpen(false); }} className="py-2 text-left hover:text-[#7F5AF0]">Planes</button>
             <div className="pt-2">
               <Button
-                className="w-full gradient-primary hover:opacity-90 transition-opacity text-sm"
+                className="w-full gradient-primary hover:opacity-90 transition-opacity text-sm rounded-full"
                 onClick={() => {
                   openWhatsApp("Hola! Me interesa solicitar una demo de BusinessManager")
                   setIsMenuOpen(false)
