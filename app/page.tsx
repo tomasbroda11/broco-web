@@ -199,7 +199,7 @@ export default function BrocoSolutionsLanding() {
                   return (
                     <div key={index} className="relative">
                       {service.highlight && (
-                        <div className="absolute -top-4 -left-4 z-50 bg-gradient-to-r from-[#7F5AF0] to-[#3E6FA8] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-2xl border border-white/20">
+                        <div className="absolute -top-4 -right-4 z-50 bg-gradient-to-r from-[#7F5AF0] to-[#3E6FA8] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-2xl border border-white/20">
                           <span className="flex items-center gap-1">
                             <Sparkles className="h-3 w-3" />
                             Estrella
