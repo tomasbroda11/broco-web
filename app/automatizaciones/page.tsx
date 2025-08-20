@@ -254,12 +254,12 @@ export default function AutomatizacionesPage() {
                 max-w-[14ch] mx-auto
               "
             >
-              Automatizaciones a medida <span className="gradient-text">para pymes</span>
+              Automatizaciones a medida <span className="gradient-text">para empresas</span>
             </h1>
 
             {/* Párrafo: también reduce en mobile */}
             <p className="mt-5 text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
-              Te sacamos de encima lo manual y desordenado. Flujos simples, medibles y sin humo.
+              Te sacamos de encima lo manual y desordenado. Flujos simples, medibles y escalables.
             </p>
 
             {/* CTAs: un poco menos de margen en mobile */}

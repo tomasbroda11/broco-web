@@ -67,7 +67,7 @@ export default function BrocoSolutionsLanding() {
   }, [])
 
   const services = [
-    { icon: <Database className="h-6 w-6" />, title: "Business Manager ERP", description: "Sistema modular que centraliza y automatiza todas las operaciones de tu empresa.", highlight: "Producto estrella" },
+    { icon: <Database className="h-6 w-6" />, title: "Business Manager ERP", description: "Sistema modular que centraliza y automatiza todas las operaciones de tu empresa.", highlight: "Producto estrella"link: "/bmerp" },
     { icon: <Zap className="h-6 w-6" />, title: "Process Automation", description: "Automatización inteligente que elimina tareas repetitivas.",link: "/automatizaciones" },
     { icon: <Cloud className="h-6 w-6" />, title: "Cloud Migration", description: "Infraestructura en la nube con arquitectura segura y escalable." },
     { icon: <Brain className="h-6 w-6" />, title: "AI Integration", description: "Inteligencia artificial aplicada a procesos de negocio reales." },
@@ -194,12 +194,12 @@ export default function BrocoSolutionsLanding() {
               <div className="grid md:grid-cols-2 gap-6">
                 {services.map((service, index) => {
                   const clickable = Boolean(service.link)
-                  const go = () => service.link && navigateWithTransition(service.link)
+                  const go = () => service.link && navigateWithTransition(service.link!)
 
                   return (
                     <div key={index} className="relative">
                       {service.highlight && (
-                        <div className="absolute -top-4 -right-4 z-50 bg-gradient-to-r from-[#7F5AF0] to-[#3E6FA8] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-2xl border border-white/20">
+                        <div className="absolute -top-4 -left-4 z-50 bg-gradient-to-r from-[#7F5AF0] to-[#3E6FA8] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-2xl border border-white/20">
                           <span className="flex items-center gap-1">
                             <Sparkles className="h-3 w-3" />
                             Estrella
@@ -207,30 +207,48 @@ export default function BrocoSolutionsLanding() {
                         </div>
                       )}
 
+                      {/* CARD */}
                       <div
-                        className={`service-card group h-32 flex items-start
-                          ${service.highlight ? "featured-service" : ""}
-                          ${clickable ? "cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/20 rounded-xl" : ""}`}
+                        className={`service-card group rounded-xl
+                                    p-5 min-h-[9.5rem] flex flex-col justify-start
+                                    ${service.highlight ? "featured-service" : ""}
+                                    ${clickable ? "cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/20" : ""}`}
                         style={{ animationDelay: `${index * 0.1}s` }}
                         onClick={go}
                         onKeyDown={(e) => (clickable && (e.key === "Enter" || e.key === " ")) && go()}
                         role={clickable ? "button" : undefined}
                         tabIndex={clickable ? 0 : -1}
+                        aria-label={clickable ? `Abrir ${service.title}` : undefined}
                       >
-                        <div className="flex items-start space-x-4 h-full">
+                        <div className="flex items-start gap-4">
                           <div className="service-icon flex-shrink-0">{service.icon}</div>
-                          <div className="flex-1 flex flex-col justify-start">
+
+                          <div className="flex-1">
                             <h3 className="font-semibold text-white mb-2 group-hover:text-[#7F5AF0] transition-colors">
                               {service.title}
                             </h3>
-                            <p className="text-sm text-white/60 leading-relaxed flex-1">{service.description}</p>
+
+                            <p className="text-sm text-white/60 leading-relaxed">
+                              {service.description}
+                            </p>
+
+                            {/* Indicador de click: sólo si tiene link */}
+                            {clickable && (
+                              <span
+                                className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium
+                                          text-white/80 border border-white/15 rounded-full px-3 py-1
+                                          transition-all group-hover:text-white group-hover:border-[#7F5AF0]/50"
+                              >
+                                Conocé más
+                                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                              </span>
+                            )}
                           </div>
                         </div>
                       </div>
                     </div>
                   )
                 })}
-
               </div>
             </div>
           </div>
