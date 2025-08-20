@@ -50,13 +50,19 @@ export default function AutomatizacionesPage() {
   }
 
   useEffect(() => {
+    // liberar scroll si venís de otra página con transición
+    document.body.classList.remove("page-transitioning", "is-scrolling");
+
+    // animaciones on-scroll
     const obs = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("animate-in")),
       { threshold: 0.1, rootMargin: "0px 0px -80px 0px" },
-    )
-    document.querySelectorAll(".animate-on-scroll").forEach((el) => obs.observe(el))
-    return () => obs.disconnect()
-  }, [])
+    );
+    document.querySelectorAll(".animate-on-scroll").forEach((el) => obs.observe(el));
+
+    return () => obs.disconnect();
+  }, []);
+
 
   // ===== Soluciones enfocadas en dolor del cliente =====
   const buckets: {
@@ -153,7 +159,7 @@ export default function AutomatizacionesPage() {
   ]
 
   return (
-    <div className={`min-h-screen bg-[#0D0D0D] text-white overflow-x-hidden touch-pan-y ${isTransitioning ? "transitioning" : ""}`}>
+    <div className={`min-h-screen bg-[#0D0D0D] text-white overflow-x-hidden touch-pan-y overflow-y-auto ios-smooth-scroll ${isTransitioning ? "transitioning" : ""}`}>
       {isTransitioning && (
         <div className="fixed inset-0 z-[9999] bg-gradient-to-br from-[#7F5AF0] to-[#3E6FA8] transition-opacity duration-300 flex items-center justify-center">
           <div className="text-white text-2xl font-bold animate-pulse">Cargando...</div>

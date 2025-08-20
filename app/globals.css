@@ -204,6 +204,7 @@
   background: radial-gradient(circle at 20% 50%, rgba(127, 90, 240, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(62, 111, 168, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 40% 80%, rgba(127, 90, 240, 0.05) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .floating-orbs::before,
@@ -290,6 +291,7 @@
   background: linear-gradient(135deg, rgba(127, 90, 240, 0.03) 0%, transparent 50%);
   transform: skewY(-3deg);
   transform-origin: top left;
+  pointer-events: none;
 }
 
 /* Stats Grid */
@@ -400,8 +402,14 @@
 }
 
 /* Page Transition Styles */
-.page-transitioning {
+html.page-transitioning,
+body.page-transitioning {
   overflow: hidden;
+}
+
+/* Helpers mobile */
+.ios-smooth-scroll {
+  -webkit-overflow-scrolling: touch;
 }
 
 .transitioning {
