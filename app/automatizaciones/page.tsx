@@ -28,7 +28,11 @@ export default function AutomatizacionesPage() {
 
   const navigateWithTransition = (href: string) => {
     setIsTransitioning(true)
+    // AÑADIR: bloquear scroll en html y body mientras dura la transición
+    const html = document.documentElement
+    html.classList.add("page-transitioning")
     document.body.classList.add("page-transitioning")
+
     setTimeout(() => router.push(href), 300)
   }
 
@@ -50,7 +54,8 @@ export default function AutomatizacionesPage() {
   }
 
   useEffect(() => {
-    // liberar scroll si venís de otra página con transición
+    const html = document.documentElement
+    html.classList.remove("page-transitioning", "is-scrolling")
     document.body.classList.remove("page-transitioning", "is-scrolling");
 
     // animaciones on-scroll

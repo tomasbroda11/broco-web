@@ -35,10 +35,12 @@ export default function BrocoSolutionsLanding() {
 
   const navigateWithTransition = (href: string) => {
     setIsTransitioning(true)
+    const html = document.documentElement
+    html.classList.add("page-transitioning")
     document.body.classList.add("page-transitioning")
-    setTimeout(() => {
-      router.push(href)
-    }, 300)
+    const t = setTimeout(() => router.push(href), 300)
+    // opcional: si el componente desmonta en esos 300ms
+    return () => clearTimeout(t)
   }
 
   const scrollToSection = (sectionId: string) => {
@@ -55,6 +57,11 @@ export default function BrocoSolutionsLanding() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    router.prefetch("/bmerp")
+    router.prefetch("/automatizaciones")
+  }, [router])
+  
   // Animaciones al hacer scroll
   useEffect(() => {
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
@@ -64,6 +71,13 @@ export default function BrocoSolutionsLanding() {
     const animatedElements = document.querySelectorAll(".animate-on-scroll")
     animatedElements.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    // Liberar cualquier lock heredado de otra ruta
+    const html = document.documentElement
+    html.classList.remove("page-transitioning", "is-scrolling")
+    document.body.classList.remove("page-transitioning", "is-scrolling")
   }, [])
 
   const services = [
@@ -76,9 +90,9 @@ export default function BrocoSolutionsLanding() {
   ]
 
   return (
-    <div className={`min-h-screen bg-[#0D0D0D] text-white overflow-x-hidden ${isTransitioning ? "transitioning" : ""}`}>
+    <div className={`min-h-screen bg-[#0D0D0D] text-white overflow-x-hidden overflow-y-auto touch-pan-y ios-smooth-scroll ${isTransitioning ? "transitioning" : ""}`}>
       {isTransitioning && (
-        <div className="fixed inset-0 z-[9999] bg-gradient-to-br from-[#7F5AF0] to-[#3E6FA8] transition-opacity duration-300 flex items-center justify-center">
+        <div className="fixed inset-0 z-[9999] bg-gradient-to-br from-[#7F5AF0] to-[#3E6FA8] transition-opacity duration-300 flex items-center justify-center ">
           <div className="text-white text-2xl font-bold animate-pulse">Cargando...</div>
         </div>
       )}
@@ -134,7 +148,7 @@ export default function BrocoSolutionsLanding() {
 
       {/* Hero */}
       <section ref={heroRef} id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
-        <div className="absolute inset-0 animated-bg">
+        <div className="absolute inset-0 animated-bg pointer-events-none">
           <div className="floating-orbs" />
           <div className="grid-pattern" />
         </div>
@@ -170,7 +184,7 @@ export default function BrocoSolutionsLanding() {
 
       {/* Services */}
       <section id="servicios" className="py-32 relative">
-        <div className="absolute inset-0 diagonal-bg" />
+        <div className="absolute inset-0 diagonal-bg pointer-events-none" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 animate-on-scroll slide-in-left">
