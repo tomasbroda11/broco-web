@@ -67,7 +67,7 @@ export default function BrocoSolutionsLanding() {
   }, [])
 
   const services = [
-    { icon: <Database className="h-6 w-6" />, title: "Business Manager ERP", description: "Sistema modular que centraliza y automatiza todas las operaciones de tu empresa.", highlight: "Producto estrella"link: "/bmerp" },
+    { icon: <Database className="h-6 w-6" />, title: "Business Manager ERP", description: "Sistema modular que centraliza y automatiza todas las operaciones de tu empresa.", highlight: "Producto estrella",link: "/bmerp" },
     { icon: <Zap className="h-6 w-6" />, title: "Process Automation", description: "Automatización inteligente que elimina tareas repetitivas.",link: "/automatizaciones" },
     { icon: <Cloud className="h-6 w-6" />, title: "Cloud Migration", description: "Infraestructura en la nube con arquitectura segura y escalable." },
     { icon: <Brain className="h-6 w-6" />, title: "AI Integration", description: "Inteligencia artificial aplicada a procesos de negocio reales." },
