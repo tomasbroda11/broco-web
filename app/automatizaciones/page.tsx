@@ -153,7 +153,7 @@ export default function AutomatizacionesPage() {
   ]
 
   return (
-    <div className={`min-h-screen bg-[#0D0D0D] text-white overflow-x-hidden ${isTransitioning ? "transitioning" : ""}`}>
+    <div className={`min-h-screen bg-[#0D0D0D] text-white overflow-x-hidden touch-pan-y ${isTransitioning ? "transitioning" : ""}`}>
       {isTransitioning && (
         <div className="fixed inset-0 z-[9999] bg-gradient-to-br from-[#7F5AF0] to-[#3E6FA8] transition-opacity duration-300 flex items-center justify-center">
           <div className="text-white text-2xl font-bold animate-pulse">Cargando...</div>
@@ -234,7 +234,7 @@ export default function AutomatizacionesPage() {
           id="inicio"
           className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-24 sm:pt-32 pb-12"
         >
-          <div className="absolute inset-0 animated-bg">
+          <div className="absolute inset-0 animated-bg pointer-events-none">
             <div className="floating-orbs" />
             <div className="grid-pattern" />
           </div>
@@ -283,7 +283,7 @@ export default function AutomatizacionesPage() {
 
         {/* SOLUCIONES por dolor */}
         <section id="servicios" className="py-24 relative">
-          <div className="absolute inset-0 diagonal-bg" />
+          <div className="absolute inset-0 diagonal-bg pointer-events-none" />
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center max-w-2xl mx-auto animate-on-scroll fade-in">
               <h2 className="text-3xl md:text-5xl font-bold">
@@ -404,7 +404,7 @@ export default function AutomatizacionesPage() {
 
         {/* CTA final */}
         <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 gradient-primary opacity-90"></div>
+          <div className="absolute inset-0 gradient-primary opacity-90 pointer-events-none"></div>
           <div className="container mx-auto relative z-10 text-center px-4">
             <h3 className="text-2xl md:text-4xl font-bold">¿Listo para dejar de hacer todo a mano?</h3>
             <p className="mt-3 text-white/80">Contanos tu caso y armamos un piloto en días.</p>
