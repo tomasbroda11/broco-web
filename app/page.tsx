@@ -68,8 +68,8 @@ export default function BrocoSolutionsLanding() {
 
   const services = [
     { icon: <Database className="h-6 w-6" />, title: "Business Manager ERP", description: "Sistema modular que centraliza y automatiza todas las operaciones de tu empresa.", highlight: "Producto estrella" },
+    { icon: <Zap className="h-6 w-6" />, title: "Process Automation", description: "Automatización inteligente que elimina tareas repetitivas.",link: "/automatizaciones" },
     { icon: <Cloud className="h-6 w-6" />, title: "Cloud Migration", description: "Infraestructura en la nube con arquitectura segura y escalable." },
-    { icon: <Zap className="h-6 w-6" />, title: "Process Automation", description: "Automatización inteligente que elimina tareas repetitivas." },
     { icon: <Brain className="h-6 w-6" />, title: "AI Integration", description: "Inteligencia artificial aplicada a procesos de negocio reales." },
     { icon: <Code className="h-6 w-6" />, title: "Custom Development", description: "Desarrollo web y aplicaciones a medida con tecnología moderna." },
     { icon: <BarChart3 className="h-6 w-6" />, title: "Data Visualization", description: "Dashboards inteligentes para decisiones basadas en datos." },
@@ -192,33 +192,45 @@ export default function BrocoSolutionsLanding() {
 
             <div className="lg:col-span-7 animate-on-scroll slide-in-right">
               <div className="grid md:grid-cols-2 gap-6">
-                {services.map((service, index) => (
-                  <div key={index} className="relative">
-                    {service.highlight && (
-                      <div className="absolute -top-4 -right-4 z-50 bg-gradient-to-r from-[#7F5AF0] to-[#3E6FA8] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-2xl border border-white/20 transition-all duration-300 hover:scale-110">
-                        <span className="flex items-center gap-1">
-                          <Sparkles className="h-3 w-3" />
-                          Estrella
-                        </span>
-                      </div>
-                    )}
-                    <div
-                      className={`service-card group h-32 flex items-start ${service.highlight ? "featured-service cursor-pointer" : ""}`}
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                      onClick={service.highlight ? () => navigateWithTransition("/bmerp") : undefined}
-                    >
-                      <div className="flex items-start space-x-4 h-full">
-                        <div className="service-icon flex-shrink-0">{service.icon}</div>
-                        <div className="flex-1 flex flex-col justify-start">
-                          <h3 className="font-semibold text-white mb-2 group-hover:text-[#7F5AF0] transition-colors">
-                            {service.title}
-                          </h3>
-                          <p className="text-sm text-white/60 leading-relaxed flex-1">{service.description}</p>
+                {services.map((service, index) => {
+                  const clickable = Boolean(service.link)
+                  const go = () => service.link && navigateWithTransition(service.link)
+
+                  return (
+                    <div key={index} className="relative">
+                      {service.highlight && (
+                        <div className="absolute -top-4 -right-4 z-50 bg-gradient-to-r from-[#7F5AF0] to-[#3E6FA8] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-2xl border border-white/20">
+                          <span className="flex items-center gap-1">
+                            <Sparkles className="h-3 w-3" />
+                            Estrella
+                          </span>
+                        </div>
+                      )}
+
+                      <div
+                        className={`service-card group h-32 flex items-start
+                          ${service.highlight ? "featured-service" : ""}
+                          ${clickable ? "cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/20 rounded-xl" : ""}`}
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                        onClick={go}
+                        onKeyDown={(e) => (clickable && (e.key === "Enter" || e.key === " ")) && go()}
+                        role={clickable ? "button" : undefined}
+                        tabIndex={clickable ? 0 : -1}
+                      >
+                        <div className="flex items-start space-x-4 h-full">
+                          <div className="service-icon flex-shrink-0">{service.icon}</div>
+                          <div className="flex-1 flex flex-col justify-start">
+                            <h3 className="font-semibold text-white mb-2 group-hover:text-[#7F5AF0] transition-colors">
+                              {service.title}
+                            </h3>
+                            <p className="text-sm text-white/60 leading-relaxed flex-1">{service.description}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                })}
+
               </div>
             </div>
           </div>
