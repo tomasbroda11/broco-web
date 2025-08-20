@@ -230,37 +230,50 @@ export default function AutomatizacionesPage() {
 
       <main>
         {/* HERO */}
-        <section id="inicio" className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-32">
+        <section
+          id="inicio"
+          className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-24 sm:pt-32 pb-12"
+        >
           <div className="absolute inset-0 animated-bg">
             <div className="floating-orbs" />
             <div className="grid-pattern" />
           </div>
 
           <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-            <div className="inline-flex items-center space-x-2 glass-badge px-4 py-2 rounded-full text-sm leading-6">
+            <div className="inline-flex items-center space-x-2 glass-badge px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm leading-6">
               <Sparkles className="h-4 w-4 text-[#7F5AF0]" />
               <span>Menos tareas repetidas, más negocio</span>
             </div>
 
-            <h1 className="mt-6 text-5xl md:text-7xl font-black leading-none">
+            {/* Título: más chico en mobile, ancho limitado y mejor interlineado */}
+            <h1
+              className="
+                mt-6 font-black tracking-tight
+                text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+                leading-[1.1] sm:leading-[1.05]
+                max-w-[14ch] mx-auto
+              "
+            >
               Automatizaciones a medida <span className="gradient-text">para pymes</span>
             </h1>
 
-            <p className="mt-6 text-xl text-white/70 max-w-2xl mx-auto">
+            {/* Párrafo: también reduce en mobile */}
+            <p className="mt-5 text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
               Te sacamos de encima lo manual y desordenado. Flujos simples, medibles y sin humo.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            {/* CTAs: un poco menos de margen en mobile */}
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 className="hero-cta"
-                onClick={() => openWhatsApp("Hola! Quiero evaluar automatizaciones para mi empresa.")}
+                onClick={() => openWhatsApp('Hola! Quiero evaluar automatizaciones para mi empresa.')}
               >
                 Quiero automatizar <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button
                 variant="ghost"
                 className="text-white/80 hover:text-white border border-white/20 hover:border-[#7F5AF0]/50"
-                onClick={() => scrollTo("servicios")}
+                onClick={() => scrollTo('servicios')}
               >
                 Ver soluciones
               </Button>
