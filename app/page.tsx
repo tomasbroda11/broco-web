@@ -199,7 +199,7 @@ export default function BrocoSolutionsLanding() {
                   <span className="text-white">aplicada</span>
                 </h2>
                 <p className="text-lg text-white/70 leading-relaxed">
-                  No vendemos humo. Cada solución está diseñada para generar valor medible en tu empresa.
+                  Cada solución está diseñada para generar valor medible en tu empresa.
                 </p>
               </div>
             </div>
@@ -290,8 +290,7 @@ export default function BrocoSolutionsLanding() {
                     <h3 className="text-xl font-semibold">Nuestra realidad</h3>
                   </div>
                   <p className="text-white/80 leading-relaxed">
-                    Somos un equipo chico de desarrolladores y consultores tech en Rosario. No tenemos oficinas gigantes
-                    ni marketing inflado. Tenemos código que funciona y clientes que crecen.
+                    Somos desarrolladores y consultores tech en Rosario. Creamos soluciones confiables e innovadoras que hacen crecer a nuestros clientes.
                   </p>
                 </div>
 
