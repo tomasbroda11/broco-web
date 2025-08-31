@@ -417,7 +417,7 @@ export default function BrocoSolutionsLanding() {
                   <Phone className="h-6 w-6 text-[#7F5AF0]" />
                   <div>
                     <div className="font-semibold text-[#3E6FA8]">WhatsApp</div>
-                    <div className="text-white/80">+54 9 3464 442676</div>
+                    <div className="text-white/80">{"+54 9 3412 79 5326"}</div>
                   </div>
                 </div>
 
