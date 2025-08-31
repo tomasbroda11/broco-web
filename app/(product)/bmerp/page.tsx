@@ -42,7 +42,7 @@ export default function BusinessManagerPage() {
   const openWhatsApp = (text: string) => {
     const base = "https://api.whatsapp.com/send/"
     const params = new URLSearchParams({
-      phone: "5493464442676",
+      phone: "5493412795326",
       text,
       type: "phone_number",
       app_absent: "0",
@@ -580,7 +580,7 @@ export default function BusinessManagerPage() {
         </div>
       </footer>
       <a
-        href="https://wa.me/5493464442676?text=Hola! Me interesa conocer más sobre BusinessManager"
+        href="https://wa.me/5493412795326?text=Hola! Me interesa conocer más sobre BusinessManager"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 animate-bounce"
@@ -695,7 +695,7 @@ function PricingCard({
     const msg = planMessages[title] ?? "Hola! Me interesa conocer más sobre BusinessManager"
     const base = "https://api.whatsapp.com/send/"
     const params = new URLSearchParams({
-      phone: "5493464442676",
+      phone: "5493412795326",
       text: msg,
       type: "phone_number",
       app_absent: "0",
