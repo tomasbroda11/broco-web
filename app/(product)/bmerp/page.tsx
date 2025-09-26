@@ -441,11 +441,10 @@ export default function BusinessManagerPage() {
           <div className="container mx-auto relative z-10 px-4">
             <div className="mx-auto max-w-2xl text-center reveal" ref={addToRefs}>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-                Planes <span className="gradient-text">diseñados para ti</span>
+                Planes <span className="gradient-text">{"pensados para tu negocio"}</span>
               </h2>
               <p className="mt-4 text-lg text-gray-400">
-                Elige el plan que mejor se adapte a las necesidades de tu empresa. Contáctanos para conocer precios
-                personalizados.
+                Elegí la opción que mejor se adapte a las necesidades de tu empresa. Contactanos para recibir una propuesta a medida.
               </p>
             </div>
             <div className="mt-16 grid gap-8 md:grid-cols-3">
