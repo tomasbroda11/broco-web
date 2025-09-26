@@ -85,7 +85,7 @@ export default function BrocoSolutionsLanding() {
     { icon: <Zap className="h-6 w-6" />, title: "Automatización de Procesos", description: "Automatización inteligente que elimina tareas repetitivas.",link: "/automatizaciones" },
     { icon: <Cloud className="h-6 w-6" />, title: "Soluciones en la Nube", description: "Infraestructura en la nube con arquitectura segura y escalable." },
     { icon: <Brain className="h-6 w-6" />, title: "Integración de IA", description: "Inteligencia artificial aplicada a procesos de negocio reales." },
-    { icon: <Code className="h-6 w-6" />, title: "Custom Development", description: "Desarrollo web y aplicaciones a medida con tecnología moderna." },
+    { icon: <Code className="h-6 w-6" />, title: "Desarrollos de Software a Medida", description: "Desarrollo web y aplicaciones a medida con tecnología moderna." },
     { icon: <BarChart3 className="h-6 w-6" />, title: "Análisis y Visualización de Datos", description: "Dashboards inteligentes para decisiones basadas en datos." },
   ]
 
