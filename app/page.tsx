@@ -82,11 +82,11 @@ export default function BrocoSolutionsLanding() {
 
   const services = [
     { icon: <Database className="h-6 w-6" />, title: "Business Manager ERP", description: "Sistema modular que centraliza y automatiza todas las operaciones de tu empresa.", highlight: "Producto estrella",link: "/bmerp" },
-    { icon: <Zap className="h-6 w-6" />, title: "Process Automation", description: "Automatización inteligente que elimina tareas repetitivas.",link: "/automatizaciones" },
-    { icon: <Cloud className="h-6 w-6" />, title: "Cloud Migration", description: "Infraestructura en la nube con arquitectura segura y escalable." },
-    { icon: <Brain className="h-6 w-6" />, title: "AI Integration", description: "Inteligencia artificial aplicada a procesos de negocio reales." },
+    { icon: <Zap className="h-6 w-6" />, title: "Automatización de Procesos", description: "Automatización inteligente que elimina tareas repetitivas.",link: "/automatizaciones" },
+    { icon: <Cloud className="h-6 w-6" />, title: "Soluciones en la Nube", description: "Infraestructura en la nube con arquitectura segura y escalable." },
+    { icon: <Brain className="h-6 w-6" />, title: "Integración de IA", description: "Inteligencia artificial aplicada a procesos de negocio reales." },
     { icon: <Code className="h-6 w-6" />, title: "Custom Development", description: "Desarrollo web y aplicaciones a medida con tecnología moderna." },
-    { icon: <BarChart3 className="h-6 w-6" />, title: "Data Visualization", description: "Dashboards inteligentes para decisiones basadas en datos." },
+    { icon: <BarChart3 className="h-6 w-6" />, title: "Análisis y Visualización de Datos", description: "Dashboards inteligentes para decisiones basadas en datos." },
   ]
 
   return (
@@ -166,7 +166,7 @@ export default function BrocoSolutionsLanding() {
             </h1>
 
             <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-              Automatización, IA y cloud para empresas que buscan resultados reales, no promesas vacías.
+              Sistemas a medida, automatización, IA y soluciones en la nube para empresas que buscan resultados reales
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 mb-12">
@@ -290,7 +290,7 @@ export default function BrocoSolutionsLanding() {
                     <h3 className="text-xl font-semibold">Nuestra realidad</h3>
                   </div>
                   <p className="text-white/80 leading-relaxed">
-                    Somos desarrolladores y consultores tech en Rosario. Creamos soluciones confiables e innovadoras que hacen crecer a nuestros clientes.
+                    {"Somos desarrolladores y consultores. Creamos soluciones confiables e innovadoras que ayudan a nuestros clientes a crecer, optimizar procesos y tomar mejores decisiones.\n"}
                   </p>
                 </div>
 
@@ -300,7 +300,7 @@ export default function BrocoSolutionsLanding() {
                     <h3 className="text-xl font-semibold">Nuestro enfoque</h3>
                   </div>
                   <p className="text-white/80 leading-relaxed">
-                    Automatización inteligente, infraestructura moderna, desarrollo ágil. Sin buzzwords, sin promesas imposibles. Solo tecnología que resuelve problemas reales.
+                    {"Combinamos desarrollo ágil, tecnologías de vanguardia y automatización inteligente. Nos enfocamos en comprender a cada cliente para diseñar soluciones de alto impacto y valor sostenible."}
                   </p>
                 </div>
               </div>

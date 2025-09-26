@@ -201,8 +201,7 @@ export default function BusinessManagerPage() {
               <span className="gradient-text">Mas decisión</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg sm:text-xl text-gray-300 animate-slide-right text-center">
-              BusinessManager revoluciona la forma en que administras tu empresa con un sistema integral, intuitivo y
-              potente. Diseñado para el empresario moderno.
+              Business Manager revoluciona la forma en que administrás tu empresa con un sistema integral, intuitivo y potente. Diseñado para empresas que buscan crecer con eficiencia.
             </p>
             <div
               className="mt-10 flex flex-wrap justify-center gap-4 animate-fade-in"
@@ -409,10 +408,9 @@ export default function BusinessManagerPage() {
 
           <div className="container mx-auto relative z-10 text-center px-4">
             <div className="reveal" ref={addToRefs}>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Transforma tu negocio hoy</h2>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">{"Impulsá la transformación de tu empresa"}</h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg">
-                Únete a las empresas que ya han optimizado su gestión con BusinessManager. Solicita una demostración
-                personalizada y descubre todo su potencial.
+                {"Sumate a las organizaciones que ya optimizaron su gestión con Business Manager. Solicitá una demostración personalizada y conocé todo su potencial."}
               </p>
               <Button
                 size="lg"
