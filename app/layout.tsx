@@ -16,9 +16,9 @@ const openSans = Open_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Broco Solutions - Tecnología que funciona",
+  title: "Broco Solutions - Menos operación, mas decisión",
   description:
-    "Automatización, IA y cloud para empresas que buscan resultados reales. Somos un equipo tech de Rosario que transforma empresas con soluciones que funcionan.",
+    "Sistemas a medida, automatización, IA y soluciones en la nube para empresas que buscan resultados reales.",
     generator: 'v0.dev',
     icons: {
     icon: [
