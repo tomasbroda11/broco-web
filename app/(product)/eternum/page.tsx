@@ -1,28 +1,35 @@
 "use client"
 
 import type React from "react"
-
 import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import {
   ArrowRight,
   BarChart3,
-  Box,
+  Calculator,
   CreditCard,
+  Factory,
   FileText,
-  Layers,
   Package,
   ShoppingCart,
+  Truck,
   Users,
+  Warehouse,
   Menu,
   Linkedin,
+  Wheat,
+  Milk,
+  Beef,
+  Wrench,
+  Fuel,
+  Newspaper,
+  Receipt,
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 export default function EternumPage() {
-  // Referencia para animaciones de scroll
   const revealRefs = useRef<HTMLElement[]>([])
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -36,7 +43,6 @@ export default function EternumPage() {
     }, 300)
   }
 
-  // Helper para abrir WhatsApp con mensaje
   const openWhatsApp = (text: string) => {
     const base = "https://api.whatsapp.com/send/"
     const params = new URLSearchParams({
@@ -48,39 +54,33 @@ export default function EternumPage() {
     window.open(`${base}?${params.toString()}`, "_blank")
   }
 
-  // Función para añadir elementos a la lista de referencias
   const addToRefs = (el: HTMLElement | null) => {
     if (el && !revealRefs.current.includes(el)) {
       revealRefs.current.push(el)
     }
   }
 
-  // Efecto para manejar las animaciones de scroll
   useEffect(() => {
     const handleScroll = () => {
       revealRefs.current.forEach((el) => {
         const elementTop = el.getBoundingClientRect().top
         const elementVisible = 150
-
         if (elementTop < window.innerHeight - elementVisible) {
           el.classList.add("active")
         }
       })
     }
-
     window.addEventListener("scroll", handleScroll)
-    handleScroll() // Verificar elementos visibles al cargar
-
+    handleScroll()
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Función para desplazamiento suave a secciones
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId)
     if (section) {
       document.body.classList.add("is-scrolling")
       window.scrollTo({
-        top: section.offsetTop - 80, // Ajuste para el header
+        top: section.offsetTop - 80,
         behavior: "smooth",
       })
       setTimeout(() => {
@@ -99,17 +99,7 @@ export default function EternumPage() {
 
       {/* Floating Navigation */}
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-        <div
-          className="
-            glass-nav
-            flex lg:inline-flex items-center rounded-full
-            px-4 lg:px-8 py-3
-            w-[92vw] lg:w-auto
-            justify-between lg:justify-start
-            gap-0 lg:gap-4
-          "
-        >
-          {/* Logo - Updated to Broco Solutions */}
+        <div className="glass-nav flex lg:inline-flex items-center rounded-full px-4 lg:px-8 py-3 w-[92vw] lg:w-auto justify-between lg:justify-start gap-0 lg:gap-4">
           <button
             onClick={() => scrollToSection("hero")}
             className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer flex-shrink-0"
@@ -124,7 +114,6 @@ export default function EternumPage() {
             </span>
           </button>
 
-          {/* Links desktop */}
           <div className="hidden lg:flex items-center space-x-8 text-sm ml-4">
             <button
               onClick={() => scrollToSection("features")}
@@ -152,7 +141,6 @@ export default function EternumPage() {
             </button>
           </div>
 
-          {/* CTA desktop - Updated WhatsApp message to Eternum */}
           <div className="hidden lg:block ml-auto">
             <Button
               className="gradient-primary hover:opacity-90 transition-opacity text-sm px-6 py-2 rounded-full"
@@ -162,9 +150,8 @@ export default function EternumPage() {
             </Button>
           </div>
 
-          {/* Hamburguesa mobile */}
           <button
-            className="lg:hidden p-2 rounded-md hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+            className="lg:hidden p-2 rounded-md hover:bg-white/5"
             onClick={() => setIsMenuOpen((o) => !o)}
             aria-label="Abrir menú"
           >
@@ -172,11 +159,8 @@ export default function EternumPage() {
           </button>
         </div>
 
-        {/* Dropdown mobile - Updated WhatsApp message to Eternum */}
         <div
-          className={`lg:hidden transition-all duration-200 overflow-hidden mt-2 rounded-2xl glass-nav ${
-            isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
-          }`}
+          className={`lg:hidden transition-all duration-200 overflow-hidden mt-2 rounded-2xl glass-nav ${isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 pointer-events-none"}`}
         >
           <div className="flex flex-col px-4 py-3 gap-2">
             <button
@@ -231,9 +215,8 @@ export default function EternumPage() {
       </nav>
 
       <main className="flex-1">
-        {/* Hero Section - Updated all references to Eternum */}
+        {/* Hero Section */}
         <section id="hero" className="relative overflow-hidden py-40 bg-black">
-          {/* Elementos de fondo animados */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary opacity-50 rounded-full filter blur-3xl animate-float"></div>
             <div
@@ -251,9 +234,9 @@ export default function EternumPage() {
               Menos operación <br />
               <span className="gradient-text">Mas decisión</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg sm:text-xl text-gray-300 animate-slide-right text-center">
-              Eternum revoluciona la forma en que administrás tu empresa con un sistema integral, intuitivo y potente.
-              Diseñado para empresas que buscan crecer con eficiencia.
+            <p className="mt-6 max-w-3xl text-lg sm:text-xl text-gray-300 animate-slide-right text-center">
+              Eternum® es un sistema contable y de gestión integral para PyMES. Multi empresa, multi sucursal y multi
+              monedas. Con una interfaz intuitiva y exportación a Excel, PDF y más.
             </p>
             <div
               className="mt-10 flex flex-wrap justify-center gap-4 animate-fade-in"
@@ -268,76 +251,74 @@ export default function EternumPage() {
               </Button>
             </div>
           </div>
-
-          {/* Elemento decorativo */}
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent"></div>
         </section>
 
-        {/* Features Section - Updated to Eternum */}
+        {/* Features Section - Main Modules */}
         <section id="features" className="py-20 bg-gray-950">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center reveal" ref={addToRefs}>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-                <span className="gradient-text">Todas las herramientas</span> que necesitas
+                <span className="gradient-text">Módulos Principales</span>
               </h2>
               <p className="mt-4 text-lg text-gray-400">
-                Eternum integra todas las funcionalidades esenciales para la gestión eficiente de tu empresa.
+                Eternum integra todas las funcionalidades esenciales para la gestión completa de tu empresa.
               </p>
             </div>
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               <FeatureCard
-                icon={<Box className="h-10 w-10" />}
-                title="Gestión de Productos"
-                description="Administra tu catálogo de productos con facilidad. Añade, edita y organiza tus productos con información detallada."
+                icon={<Calculator className="h-10 w-10" />}
+                title="Contabilidad General"
+                description="Gestión contable completa con plan de cuentas, asientos automáticos y estados financieros."
                 delay={0}
                 addToRefs={addToRefs}
               />
               <FeatureCard
                 icon={<ShoppingCart className="h-10 w-10" />}
-                title="Control de Pedidos"
-                description="Seguimiento completo del ciclo de pedidos, desde la creación hasta la entrega y facturación."
+                title="Compras"
+                description="Control total del ciclo de compras, desde órdenes hasta recepción y pagos a proveedores."
                 delay={0.1}
                 addToRefs={addToRefs}
               />
               <FeatureCard
-                icon={<Package className="h-10 w-10" />}
-                title="Gestión de Proveedores"
-                description="Mantén organizada toda la información de tus proveedores y optimiza tus relaciones comerciales."
+                icon={<FileText className="h-10 w-10" />}
+                title="Ventas"
+                description="Facturación electrónica, presupuestos, remitos y seguimiento completo de operaciones comerciales."
                 delay={0.2}
                 addToRefs={addToRefs}
               />
               <FeatureCard
-                icon={<Layers className="h-10 w-10" />}
-                title="Control de Stock"
-                description="Monitorea tu inventario en tiempo real con alertas automáticas y gestión de múltiples almacenes."
+                icon={<Users className="h-10 w-10" />}
+                title="Cuentas por Cobrar"
+                description="Seguimiento de deudores, antigüedad de saldos, gestión de cobranzas y recibos."
                 delay={0.3}
                 addToRefs={addToRefs}
               />
               <FeatureCard
-                icon={<Users className="h-10 w-10" />}
-                title="Gestión de Clientes"
-                description="Base de datos completa de clientes con historial de compras, preferencias y comunicaciones."
+                icon={<CreditCard className="h-10 w-10" />}
+                title="Cuentas por Pagar"
+                description="Control de obligaciones, vencimientos, órdenes de pago y gestión de proveedores."
                 delay={0.4}
                 addToRefs={addToRefs}
               />
               <FeatureCard
-                icon={<CreditCard className="h-10 w-10" />}
-                title="Sistema de Pagos"
-                description="Procesa pagos de forma segura y mantén un registro detallado de todas las transacciones."
+                icon={<Factory className="h-10 w-10" />}
+                title="Producción"
+                description="Órdenes de producción, fórmulas, costos y control de procesos productivos."
                 delay={0.5}
                 addToRefs={addToRefs}
               />
               <FeatureCard
-                icon={<BarChart3 className="h-10 w-10" />}
-                title="Reportes Avanzados"
-                description="Analiza el rendimiento de tu negocio con informes detallados y personalizables."
+                icon={<Warehouse className="h-10 w-10" />}
+                title="Gestión de Inventarios"
+                description="Stock en tiempo real, múltiples depósitos, movimientos, ajustes y valorización."
                 delay={0.6}
                 addToRefs={addToRefs}
               />
               <FeatureCard
-                icon={<FileText className="h-10 w-10" />}
-                title="Facturación Electrónica"
-                description="Genera facturas electrónicas que cumplen con todas las normativas fiscales vigentes."
+                icon={<BarChart3 className="h-10 w-10" />}
+                title="Tesorería"
+                description="Gestión de cajas, bancos, cheques, transferencias y conciliaciones bancarias."
                 delay={0.7}
                 addToRefs={addToRefs}
               />
@@ -345,9 +326,116 @@ export default function EternumPage() {
           </div>
         </section>
 
-        {/* Benefits Section - Updated to Eternum */}
-        <section id="benefits" className="py-20 bg-black relative overflow-hidden">
-          {/* Elementos de fondo animados */}
+        {/* Industry Modules Section */}
+        <section id="industry-modules" className="py-20 bg-black relative overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-40 -right-20 w-96 h-96 bg-primary opacity-25 rounded-full filter blur-3xl animate-float"></div>
+            <div
+              className="absolute -bottom-20 -left-20 w-80 h-80 bg-primary-blue opacity-20 rounded-full filter blur-3xl animate-float"
+              style={{ animationDelay: "3s" }}
+            ></div>
+          </div>
+
+          <div className="container mx-auto relative z-10 px-4">
+            <div className="mx-auto max-w-2xl text-center reveal" ref={addToRefs}>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+                <span className="gradient-text">Módulos de Gestión</span> por Industria
+              </h2>
+              <p className="mt-4 text-lg text-gray-400">
+                Soluciones específicas para diversos rubros, totalmente integradas con la gestión comercial y contable.
+              </p>
+            </div>
+            <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <IndustryCard
+                icon={<Wheat className="h-8 w-8" />}
+                title="Acopio de Granos"
+                description="Comercialización y acopio de granos"
+                delay={0}
+                addToRefs={addToRefs}
+              />
+              <IndustryCard
+                icon={<Package className="h-8 w-8" />}
+                title="Molinos"
+                description="Producción de harinas"
+                delay={0.05}
+                addToRefs={addToRefs}
+              />
+              <IndustryCard
+                icon={<Factory className="h-8 w-8" />}
+                title="Alimentos Balanceados"
+                description="Producción y formulación"
+                delay={0.1}
+                addToRefs={addToRefs}
+              />
+              <IndustryCard
+                icon={<Wheat className="h-8 w-8" />}
+                title="Semillas"
+                description="Producción y comercialización"
+                delay={0.15}
+                addToRefs={addToRefs}
+              />
+              <IndustryCard
+                icon={<Milk className="h-8 w-8" />}
+                title="Lácteos"
+                description="Producción de leche y quesos"
+                delay={0.2}
+                addToRefs={addToRefs}
+              />
+              <IndustryCard
+                icon={<Beef className="h-8 w-8" />}
+                title="Hacienda y Ganadería"
+                description="Gestión de rodeos y comercialización"
+                delay={0.25}
+                addToRefs={addToRefs}
+              />
+              <IndustryCard
+                icon={<Wrench className="h-8 w-8" />}
+                title="Metalmecánica"
+                description="Producción y órdenes de trabajo"
+                delay={0.3}
+                addToRefs={addToRefs}
+              />
+              <IndustryCard
+                icon={<Truck className="h-8 w-8" />}
+                title="Transporte de Carga"
+                description="Fletes y logística"
+                delay={0.35}
+                addToRefs={addToRefs}
+              />
+              <IndustryCard
+                icon={<Fuel className="h-8 w-8" />}
+                title="Combustibles"
+                description="Compra venta de combustibles y lubricantes"
+                delay={0.4}
+                addToRefs={addToRefs}
+              />
+              <IndustryCard
+                icon={<Package className="h-8 w-8" />}
+                title="Distribución"
+                description="Distribución de alimentos"
+                delay={0.45}
+                addToRefs={addToRefs}
+              />
+              <IndustryCard
+                icon={<Newspaper className="h-8 w-8" />}
+                title="Medios"
+                description="Avisos y clasificados para diarios"
+                delay={0.5}
+                addToRefs={addToRefs}
+              />
+              <IndustryCard
+                icon={<Receipt className="h-8 w-8" />}
+                title="Billing"
+                description="Facturación recurrente por contratos"
+                delay={0.55}
+                addToRefs={addToRefs}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Benefits Section */}
+        <section id="benefits" className="py-20 bg-gray-950 relative overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-40 -right-20 w-96 h-96 bg-primary opacity-25 rounded-full filter blur-3xl animate-float"></div>
             <div
@@ -412,8 +500,8 @@ export default function EternumPage() {
           </div>
         </section>
 
-        {/* Testimonials Section - Updated to Eternum */}
-        <section id="testimonials" className="py-20 bg-gray-950">
+        {/* Testimonials Section */}
+        <section id="testimonials" className="py-20 bg-black">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center reveal" ref={addToRefs}>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
@@ -421,7 +509,6 @@ export default function EternumPage() {
               </h2>
               <p className="mt-4 text-lg text-gray-400">Casos reales de rubros bien distintos en Argentina.</p>
             </div>
-
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               <TestimonialCard
                 quote="Teníamos precios y stock repartidos entre Excel y el grupo de WhatsApp. Con Eternum unificamos todo, bajaron fuerte los faltantes y la reposición sale sola. Nos ahorra horas todos los días."
@@ -430,7 +517,6 @@ export default function EternumPage() {
                 delay={0}
                 addToRefs={addToRefs}
               />
-
               <TestimonialCard
                 quote="Pasamos de papelitos y planillas a órdenes de producción, compras e insumos en un mismo lugar. Ahora vemos márgenes por trabajo y cuándo nos conviene producir. Nos ordenó la fábrica."
                 author="Sergio P."
@@ -438,7 +524,6 @@ export default function EternumPage() {
                 delay={0.2}
                 addToRefs={addToRefs}
               />
-
               <TestimonialCard
                 quote="Tenemos varias cajas y distintas cotizaciones durante el día. Ahora armamos cajas, billeteras virtuales y bancos, hacemos el arqueo en dos clics y vemos el spread de cada operación. Queda todo registrado y el cierre de turno sale sin drama."
                 author="Gaston M."
@@ -450,20 +535,17 @@ export default function EternumPage() {
           </div>
         </section>
 
-        {/* CTA Section - Updated to Eternum */}
+        {/* CTA Section */}
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 gradient-primary opacity-90"></div>
-          <div className="absolute inset-0 bg-[url('/placeholder.svg?height=800&width=1200')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
-
           <div className="container mx-auto relative z-10 text-center px-4">
             <div className="reveal" ref={addToRefs}>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                {"Impulsá la transformación de tu empresa"}
+                Impulsá la transformación de tu empresa
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg">
-                {
-                  "Sumate a las organizaciones que ya optimizaron su gestión con Eternum. Solicitá una demostración personalizada y conocé todo su potencial."
-                }
+                Sumate a las organizaciones que ya optimizaron su gestión con Eternum. Solicitá una demostración
+                personalizada y conocé todo su potencial.
               </p>
               <Button
                 size="lg"
@@ -474,15 +556,12 @@ export default function EternumPage() {
               </Button>
             </div>
           </div>
-
-          {/* Elementos decorativos animados */}
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
         </section>
 
-        {/* Pricing Section - Updated plan messages to Eternum */}
-        <section id="pricing" className="py-20 bg-black relative overflow-hidden">
-          {/* Elementos de fondo animados */}
+        {/* Pricing Section */}
+        <section id="pricing" className="py-20 bg-gray-950 relative overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-40 left-1/3 w-96 h-96 bg-primary opacity-25 rounded-full filter blur-3xl animate-float"></div>
             <div
@@ -497,7 +576,7 @@ export default function EternumPage() {
                 <span className="gradient-text">Planes</span> para cada necesidad
               </h2>
               <p className="mt-4 text-lg text-gray-400">
-                Elegí el plan que mejor se adapte a tu empresa y comenzá a transformar tu gestión.
+                Elegí el plan que mejor se adapte a tu empresa. Contactanos para recibir una cotización personalizada.
               </p>
             </div>
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
@@ -505,10 +584,10 @@ export default function EternumPage() {
                 title="Basic"
                 description="Para emprendedores y pequeños negocios"
                 features={[
-                  "Hasta 500 productos",
+                  "Módulos principales",
                   "1 usuario",
                   "Gestión de inventario",
-                  "Facturación básica",
+                  "Facturación electrónica",
                   "Soporte por email",
                 ]}
                 delay={0}
@@ -519,11 +598,11 @@ export default function EternumPage() {
                 title="Pro"
                 description="Para empresas en crecimiento"
                 features={[
-                  "Productos ilimitados",
-                  "5 usuarios",
-                  "Todas las funciones Basic",
+                  "Todos los módulos principales",
+                  "Múltiples usuarios",
+                  "Módulos de industria",
+                  "Multi sucursal",
                   "Reportes avanzados",
-                  "API integración",
                   "Soporte prioritario",
                 ]}
                 highlighted={true}
@@ -536,10 +615,10 @@ export default function EternumPage() {
                 description="Solución personalizada"
                 features={[
                   "Usuarios ilimitados",
-                  "Todas las funciones Pro",
+                  "Multi empresa",
+                  "Multi moneda",
                   "Implementación dedicada",
                   "Desarrollo personalizado",
-                  "SLA garantizado",
                   "Soporte 24/7",
                 ]}
                 delay={0.2}
@@ -551,7 +630,7 @@ export default function EternumPage() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-20 bg-gray-950">
+        <section id="faq" className="py-20 bg-black">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-2xl text-center reveal" ref={addToRefs}>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
@@ -562,27 +641,27 @@ export default function EternumPage() {
             <div className="mt-16 max-w-3xl mx-auto">
               <FAQItem
                 question="¿Qué es Eternum?"
-                answer="Eternum es un sistema de gestión empresarial (ERP) diseñado para centralizar y automatizar todas las operaciones de tu empresa, desde la gestión de inventario hasta la facturación electrónica."
+                answer="Eternum® es un sistema contable y de gestión para PyMES (ERP). Incluye módulos de contabilidad general, compras, ventas, gestión de inventarios, pagos, cobranzas, producción y módulos especializados para diversos rubros industriales."
                 addToRefs={addToRefs}
               />
               <FAQItem
-                question="¿Puedo probarlo antes de contratar?"
-                answer="Sí, ofrecemos una demostración gratuita donde podrás conocer todas las funcionalidades del sistema y cómo puede adaptarse a las necesidades específicas de tu negocio."
+                question="¿Es multi empresa y multi sucursal?"
+                answer="Sí, Eternum es multi empresa, multi sucursal y multi monedas. Podés gestionar varias empresas y sucursales desde una misma instalación, con diferentes monedas según tus necesidades."
                 addToRefs={addToRefs}
               />
               <FAQItem
-                question="¿Cómo funciona el soporte técnico?"
-                answer="Contamos con un equipo de soporte técnico disponible según tu plan. Desde soporte por email en el plan Basic hasta asistencia 24/7 para clientes Enterprise."
+                question="¿Puedo exportar los reportes?"
+                answer="Sí, Eternum permite exportar todos sus informes a formatos de planillas de cálculo (Excel), PDF, páginas HTML y procesadores de texto."
                 addToRefs={addToRefs}
               />
               <FAQItem
-                question="¿Puedo migrar mis datos existentes?"
-                answer="Absolutamente. Ofrecemos servicios de migración de datos desde otros sistemas o archivos Excel. Nuestro equipo te acompañará durante todo el proceso de transición."
+                question="¿Tienen módulos para mi industria?"
+                answer="Eternum cuenta con módulos especializados para acopio de granos, molinos, alimentos balanceados, lácteos, ganadería, metalmecánica, transporte, combustibles, distribución y más. Todos integrados con la gestión comercial y contable."
                 addToRefs={addToRefs}
               />
               <FAQItem
-                question="¿El sistema cumple con las normativas fiscales?"
-                answer="Sí, Eternum está diseñado para cumplir con todas las normativas fiscales vigentes, incluyendo facturación electrónica y reportes requeridos por las autoridades tributarias."
+                question="¿Cómo puedo conocer los precios?"
+                answer="Para conocer los precios y recibir una cotización personalizada según las necesidades de tu empresa, contactanos por WhatsApp y te asesoraremos sin compromiso."
                 addToRefs={addToRefs}
               />
             </div>
@@ -590,7 +669,7 @@ export default function EternumPage() {
         </section>
       </main>
 
-      {/* Footer - Updated logo and WhatsApp message to Eternum */}
+      {/* Footer */}
       <footer className="bg-black border-t border-gray-800 py-12">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center space-y-6">
@@ -603,8 +682,6 @@ export default function EternumPage() {
                 Eter<span className="gradient-text">num</span>
               </span>
             </div>
-
-            {/* Social Icons */}
             <div className="flex items-center gap-4">
               <a
                 href="https://www.tiktok.com/@broco.solutions"
@@ -638,7 +715,6 @@ export default function EternumPage() {
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
-
             <p className="text-gray-500 text-sm">
               © {new Date().getFullYear()} Eternum. Un producto de Broco Solutions.
             </p>
@@ -646,7 +722,7 @@ export default function EternumPage() {
         </div>
       </footer>
 
-      {/* WhatsApp Button - Updated message to Eternum */}
+      {/* WhatsApp Button */}
       <a
         href="https://wa.me/5493412795326?text=Hola! Me interesa conocer más sobre Eternum"
         target="_blank"
@@ -677,6 +753,35 @@ function FeatureCard({ icon, title, description, delay, addToRefs }: FeatureCard
       <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg gradient-primary">{icon}</div>
       <h3 className="mb-2 text-xl font-semibold">{title}</h3>
       <p className="text-gray-400">{description}</p>
+    </div>
+  )
+}
+
+// Industry Card Component
+interface IndustryCardProps {
+  icon: React.ReactNode
+  title: string
+  description: string
+  delay: number
+  addToRefs: (el: HTMLElement | null) => void
+}
+
+function IndustryCard({ icon, title, description, delay, addToRefs }: IndustryCardProps) {
+  return (
+    <div
+      className="industry-card reveal p-5 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-[#7F5AF0]/50 transition-all duration-300 hover:transform hover:scale-105"
+      ref={addToRefs}
+      style={{ animationDelay: `${delay}s` }}
+    >
+      <div className="flex items-center gap-3">
+        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-[#7F5AF0]/20 to-[#3E6FA8]/20 text-[#7F5AF0]">
+          {icon}
+        </div>
+        <div>
+          <h3 className="font-semibold text-white">{title}</h3>
+          <p className="text-sm text-gray-400">{description}</p>
+        </div>
+      </div>
     </div>
   )
 }
@@ -721,7 +826,7 @@ function TestimonialCard({ quote, author, company, delay, addToRefs }: Testimoni
   )
 }
 
-// Pricing Card Component - Updated WhatsApp messages to Eternum
+// Pricing Card Component
 interface PricingCardProps {
   title: string
   description: string
