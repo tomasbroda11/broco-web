@@ -22,12 +22,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "BusinessManager | Brocco Solutions",
+  title: "Eternum | Brocco Solutions",
   description: "Sistema de gestión empresarial innovador, minimalista y moderno",
   generator: "v0.app",
 }
 
-export default function BMLayout({
+export default function EternumLayout({
   children,
 }: Readonly<{
   children: React.ReactNode

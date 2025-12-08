@@ -30,8 +30,8 @@ export default function BrocoSolutionsLanding() {
   const [isTransitioning, setIsTransitioning] = useState(false)
   const heroRef = useRef<HTMLElement>(null)
   const router = useRouter()
-  const [sending, setSending] = useState(false);
-  const [sendStatus, setSendStatus] = useState<null | "ok" | "error">(null);
+  const [sending, setSending] = useState(false)
+  const [sendStatus, setSendStatus] = useState<null | "ok" | "error">(null)
 
   const navigateWithTransition = (href: string) => {
     setIsTransitioning(true)
@@ -58,10 +58,10 @@ export default function BrocoSolutionsLanding() {
   }, [])
 
   useEffect(() => {
-    router.prefetch("/bmerp")
+    router.prefetch("/eternum")
     router.prefetch("/automatizaciones")
   }, [router])
-  
+
   // Animaciones al hacer scroll
   useEffect(() => {
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
@@ -81,16 +81,45 @@ export default function BrocoSolutionsLanding() {
   }, [])
 
   const services = [
-    { icon: <Database className="h-6 w-6" />, title: "Business Manager ERP", description: "Sistema modular que centraliza y automatiza todas las operaciones de tu empresa.", highlight: "Producto estrella",link: "/bmerp" },
-    { icon: <Zap className="h-6 w-6" />, title: "Automatización de Procesos", description: "Automatización inteligente que elimina tareas repetitivas.",link: "/automatizaciones" },
-    { icon: <Cloud className="h-6 w-6" />, title: "Soluciones en la Nube", description: "Infraestructura en la nube con arquitectura segura y escalable." },
-    { icon: <Brain className="h-6 w-6" />, title: "Integración de IA", description: "Inteligencia artificial aplicada a procesos de negocio reales." },
-    { icon: <Code className="h-6 w-6" />, title: "Desarrollos de Software a Medida", description: "Desarrollo web y aplicaciones a medida con tecnología moderna." },
-    { icon: <BarChart3 className="h-6 w-6" />, title: "Análisis y Visualización de Datos", description: "Dashboards inteligentes para decisiones basadas en datos." },
+    {
+      icon: <Database className="h-6 w-6" />,
+      title: "Eternum ERP",
+      description: "Sistema modular que centraliza y automatiza todas las operaciones de tu empresa.",
+      highlight: "Producto estrella",
+      link: "/eternum",
+    },
+    {
+      icon: <Zap className="h-6 w-6" />,
+      title: "Automatización de Procesos",
+      description: "Automatización inteligente que elimina tareas repetitivas.",
+      link: "/automatizaciones",
+    },
+    {
+      icon: <Cloud className="h-6 w-6" />,
+      title: "Soluciones en la Nube",
+      description: "Infraestructura en la nube con arquitectura segura y escalable.",
+    },
+    {
+      icon: <Brain className="h-6 w-6" />,
+      title: "Integración de IA",
+      description: "Inteligencia artificial aplicada a procesos de negocio reales.",
+    },
+    {
+      icon: <Code className="h-6 w-6" />,
+      title: "Desarrollos de Software a Medida",
+      description: "Desarrollo web y aplicaciones a medida con tecnología moderna.",
+    },
+    {
+      icon: <BarChart3 className="h-6 w-6" />,
+      title: "Análisis y Visualización de Datos",
+      description: "Dashboards inteligentes para decisiones basadas en datos.",
+    },
   ]
 
   return (
-    <div className={`min-h-screen bg-[#0D0D0D] text-white overflow-x-hidden overflow-y-auto touch-pan-y ios-smooth-scroll ${isTransitioning ? "transitioning" : ""}`}>
+    <div
+      className={`min-h-screen bg-[#0D0D0D] text-white overflow-x-hidden overflow-y-auto touch-pan-y ios-smooth-scroll ${isTransitioning ? "transitioning" : ""}`}
+    >
       {isTransitioning && (
         <div className="fixed inset-0 z-[9999] bg-gradient-to-br from-[#7F5AF0] to-[#3E6FA8] transition-opacity duration-300 flex items-center justify-center ">
           <div className="text-white text-2xl font-bold animate-pulse">Cargando...</div>
@@ -111,10 +140,18 @@ export default function BrocoSolutionsLanding() {
 
           {/* Links desktop */}
           <div className="hidden md:flex items-center gap-6 text-sm">
-            <button onClick={() => scrollToSection("inicio")} className="hover:text-[#7F5AF0] transition-colors">Inicio</button>
-            <button onClick={() => scrollToSection("servicios")} className="hover:text-[#7F5AF0] transition-colors">Servicios</button>
-            <button onClick={() => scrollToSection("nosotros")} className="hover:text-[#7F5AF0] transition-colors">Nosotros</button>
-            <button onClick={() => scrollToSection("contacto")} className="hover:text-[#7F5AF0] transition-colors">Contacto</button>
+            <button onClick={() => scrollToSection("inicio")} className="hover:text-[#7F5AF0] transition-colors">
+              Inicio
+            </button>
+            <button onClick={() => scrollToSection("servicios")} className="hover:text-[#7F5AF0] transition-colors">
+              Servicios
+            </button>
+            <button onClick={() => scrollToSection("nosotros")} className="hover:text-[#7F5AF0] transition-colors">
+              Nosotros
+            </button>
+            <button onClick={() => scrollToSection("contacto")} className="hover:text-[#7F5AF0] transition-colors">
+              Contacto
+            </button>
           </div>
 
           {/* Hamburguesa */}
@@ -123,7 +160,7 @@ export default function BrocoSolutionsLanding() {
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
             className="md:hidden inline-flex items-center justify-center rounded p-2 focus:outline-none"
-            onClick={() => setIsMenuOpen(o => !o)}
+            onClick={() => setIsMenuOpen((o) => !o)}
           >
             <Menu className="h-5 w-5" />
           </button>
@@ -137,17 +174,28 @@ export default function BrocoSolutionsLanding() {
           }`}
         >
           <div className="flex flex-col px-4 py-3 gap-2">
-            <button onClick={() => scrollToSection("inicio")} className="py-2 text-left hover:text-[#7F5AF0]">Inicio</button>
-            <button onClick={() => scrollToSection("servicios")} className="py-2 text-left hover:text-[#7F5AF0]">Servicios</button>
-            <button onClick={() => scrollToSection("nosotros")} className="py-2 text-left hover:text-[#7F5AF0]">Nosotros</button>
-            <button onClick={() => scrollToSection("contacto")} className="py-2 text-left hover:text-[#7F5AF0]">Contacto</button>
+            <button onClick={() => scrollToSection("inicio")} className="py-2 text-left hover:text-[#7F5AF0]">
+              Inicio
+            </button>
+            <button onClick={() => scrollToSection("servicios")} className="py-2 text-left hover:text-[#7F5AF0]">
+              Servicios
+            </button>
+            <button onClick={() => scrollToSection("nosotros")} className="py-2 text-left hover:text-[#7F5AF0]">
+              Nosotros
+            </button>
+            <button onClick={() => scrollToSection("contacto")} className="py-2 text-left hover:text-[#7F5AF0]">
+              Contacto
+            </button>
           </div>
         </div>
       </nav>
 
-
       {/* Hero */}
-      <section ref={heroRef} id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
+      <section
+        ref={heroRef}
+        id="inicio"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32"
+      >
         <div className="absolute inset-0 animated-bg pointer-events-none">
           <div className="floating-orbs" />
           <div className="grid-pattern" />
@@ -170,11 +218,15 @@ export default function BrocoSolutionsLanding() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 mb-12">
-              <Button onClick={() => navigateWithTransition("/bmerp")} className="hero-cta group cursor-pointer">
-                <span>Ver Business Manager</span>
+              <Button onClick={() => navigateWithTransition("/eternum")} className="hero-cta group cursor-pointer">
+                <span>Ver Eternum</span>
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button onClick={() => scrollToSection("servicios")} variant="ghost" className="text-white/80 hover:text-white border border-white/20 hover:border-[#7F5AF0]/50 cursor-pointer">
+              <Button
+                onClick={() => scrollToSection("servicios")}
+                variant="ghost"
+                className="text-white/80 hover:text-white border border-white/20 hover:border-[#7F5AF0]/50 cursor-pointer"
+              >
                 Explorar servicios
               </Button>
             </div>
@@ -229,7 +281,7 @@ export default function BrocoSolutionsLanding() {
                                     ${clickable ? "cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/20" : ""}`}
                         style={{ animationDelay: `${index * 0.1}s` }}
                         onClick={go}
-                        onKeyDown={(e) => (clickable && (e.key === "Enter" || e.key === " ")) && go()}
+                        onKeyDown={(e) => clickable && (e.key === "Enter" || e.key === " ") && go()}
                         role={clickable ? "button" : undefined}
                         tabIndex={clickable ? 0 : -1}
                         aria-label={clickable ? `Abrir ${service.title}` : undefined}
@@ -242,9 +294,7 @@ export default function BrocoSolutionsLanding() {
                               {service.title}
                             </h3>
 
-                            <p className="text-sm text-white/60 leading-relaxed">
-                              {service.description}
-                            </p>
+                            <p className="text-sm text-white/60 leading-relaxed">{service.description}</p>
 
                             {/* Indicador de click: sólo si tiene link */}
                             {clickable && (
@@ -290,7 +340,9 @@ export default function BrocoSolutionsLanding() {
                     <h3 className="text-xl font-semibold">Nuestra realidad</h3>
                   </div>
                   <p className="text-white/80 leading-relaxed">
-                    {"Somos desarrolladores y consultores. Creamos soluciones confiables e innovadoras que ayudan a nuestros clientes a crecer, optimizar procesos y tomar mejores decisiones.\n"}
+                    {
+                      "Somos desarrolladores y consultores. Creamos soluciones confiables e innovadoras que ayudan a nuestros clientes a crecer, optimizar procesos y tomar mejores decisiones.\n"
+                    }
                   </p>
                 </div>
 
@@ -300,7 +352,9 @@ export default function BrocoSolutionsLanding() {
                     <h3 className="text-xl font-semibold">Nuestro enfoque</h3>
                   </div>
                   <p className="text-white/80 leading-relaxed">
-                    {"Combinamos desarrollo ágil, tecnologías de vanguardia y automatización inteligente. Nos enfocamos en comprender a cada cliente para diseñar soluciones de alto impacto y valor sostenible."}
+                    {
+                      "Combinamos desarrollo ágil, tecnologías de vanguardia y automatización inteligente. Nos enfocamos en comprender a cada cliente para diseñar soluciones de alto impacto y valor sostenible."
+                    }
                   </p>
                 </div>
               </div>
@@ -346,61 +400,67 @@ export default function BrocoSolutionsLanding() {
               <div className="animate-on-scroll slide-in-left">
                 <div className="glass-card p-8 rounded-2xl">
                   <form
-                      className="space-y-6"
-                      onSubmit={async (e) => {
-                        e.preventDefault();
-                        const form = e.currentTarget as HTMLFormElement;
-                        const data = new FormData(form);
+                    className="space-y-6"
+                    onSubmit={async (e) => {
+                      e.preventDefault()
+                      const form = e.currentTarget as HTMLFormElement
+                      const data = new FormData(form)
 
-                        const payload = {
-                          name: String(data.get("name") || ""),
-                          email: String(data.get("email") || ""),
-                          company: String(data.get("company") || ""),
-                          message: String(data.get("message") || ""),
-                          hp: String(data.get("hp") || ""), // honeypot
-                        };
+                      const payload = {
+                        name: String(data.get("name") || ""),
+                        email: String(data.get("email") || ""),
+                        company: String(data.get("company") || ""),
+                        message: String(data.get("message") || ""),
+                        hp: String(data.get("hp") || ""), // honeypot
+                      }
 
-                        setSending(true);
-                        setSendStatus(null);
-                        try {
-                          const res = await fetch("/api/contact", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify(payload),
-                          });
-                          const json = await res.json();
-                          if (!res.ok || !json.ok) throw new Error(json.error || "Error");
-                          setSendStatus("ok");
-                          form.reset();
-                        } catch (err) {
-                          setSendStatus("error");
-                        } finally {
-                          setSending(false);
-                        }
-                      }}
-                    >
-                      {/* Honeypot anti-bots (oculto a usuarios) */}
-                      <input name="hp" className="hidden" tabIndex={-1} autoComplete="off" />
+                      setSending(true)
+                      setSendStatus(null)
+                      try {
+                        const res = await fetch("/api/contact", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify(payload),
+                        })
+                        const json = await res.json()
+                        if (!res.ok || !json.ok) throw new Error(json.error || "Error")
+                        setSendStatus("ok")
+                        form.reset()
+                      } catch (err) {
+                        setSendStatus("error")
+                      } finally {
+                        setSending(false)
+                      }
+                    }}
+                  >
+                    {/* Honeypot anti-bots (oculto a usuarios) */}
+                    <input name="hp" className="hidden" tabIndex={-1} autoComplete="off" />
 
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <Input name="name" placeholder="Nombre" className="modern-input" required />
-                        <Input name="email" type="email" placeholder="Email" className="modern-input" required />
-                      </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <Input name="name" placeholder="Nombre" className="modern-input" required />
+                      <Input name="email" type="email" placeholder="Email" className="modern-input" required />
+                    </div>
 
-                      <Input name="company" placeholder="Empresa" className="modern-input" />
-                      <Textarea name="message" placeholder="Contanos sobre tu proyecto..." rows={4} className="modern-input" required />
+                    <Input name="company" placeholder="Empresa" className="modern-input" />
+                    <Textarea
+                      name="message"
+                      placeholder="Contanos sobre tu proyecto..."
+                      rows={4}
+                      className="modern-input"
+                      required
+                    />
 
-                      {sendStatus === "ok" && (
-                        <div className="text-sm text-green-400">¡Gracias! Te escribimos a la brevedad.</div>
-                      )}
-                      {sendStatus === "error" && (
-                        <div className="text-sm text-red-400">Ups, no pudimos enviar el mensaje. Probá de nuevo.</div>
-                      )}
+                    {sendStatus === "ok" && (
+                      <div className="text-sm text-green-400">¡Gracias! Te escribimos a la brevedad.</div>
+                    )}
+                    {sendStatus === "error" && (
+                      <div className="text-sm text-red-400">Ups, no pudimos enviar el mensaje. Probá de nuevo.</div>
+                    )}
 
-                      <Button className="w-full hero-cta" disabled={sending}>
-                        {sending ? "Enviando..." : "Enviar mensaje"}
-                      </Button>
-                    </form>
+                    <Button className="w-full hero-cta" disabled={sending}>
+                      {sending ? "Enviando..." : "Enviar mensaje"}
+                    </Button>
+                  </form>
                 </div>
               </div>
 
@@ -432,46 +492,50 @@ export default function BrocoSolutionsLanding() {
                 <div className="pt-6">
                   <div className="text-sm text-white/60 mb-4">Seguinos en</div>
                   <div className="flex space-x-4">
-                    <a href="https://www.linkedin.com/company/brocosolutions/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href="https://www.instagram.com/broco.solutions/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                    <a href="https://www.tiktok.com/@broco.solutions?_t=ZM-8yyzffLfq6Q&_r=1" target="_blank" rel="noopener noreferrer">TikTok</a>
+                    <a
+                      href="https://www.linkedin.com/company/brocosolutions/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/60 hover:text-[#7F5AF0] transition-colors p-2 hover:bg-white/10 rounded-full"
+                      aria-label="LinkedIn"
+                    >
+                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                      </svg>
+                    </a>
+                    <a
+                      href="https://www.instagram.com/broco.solutions/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/60 hover:text-[#7F5AF0] transition-colors p-2 hover:bg-white/10 rounded-full"
+                      aria-label="Instagram"
+                    >
+                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-4.358-.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                      </svg>
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/brocosolutions/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/60 hover:text-[#7F5AF0] transition-colors p-2 hover:bg-white/10 rounded-full"
+                      aria-label="LinkedIn"
+                    >
+                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v11.452zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
+                    </a>
                   </div>
+                </div>
+
+                <div className="text-sm text-white/60">
+                  © {new Date().getFullYear()} Broco Solutions. Tecnología que funciona.
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-white/10 py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center gap-3 mb-4 md:mb-0">
-              <Image src="/brand/bs-mark-neg.svg" alt="Broco Solutions" width={24} height={24} />
-              <span className="text-2xl font-bold neon-text">Broco Solutions</span>
-            </div>
-            <div className="flex items-center gap-6 mb-4 md:mb-0">
-              <div className="flex gap-4">
-                {/* Íconos sociales */}
-                <a href="https://www.tiktok.com/@broco.solutions?_t=ZM-8yyzffLfq6Q&_r=1" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#7F5AF0] transition-colors p-2 hover:bg-white/10 rounded-full" aria-label="TikTok">
-                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" /></svg>
-                </a>
-                <a href="https://www.instagram.com/broco.solutions/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#7F5AF0] transition-colors p-2 hover:bg-white/10 rounded-full" aria-label="Instagram">
-                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.584.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
-                </a>
-                <a href="https://www.linkedin.com/company/brocosolutions/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#7F5AF0] transition-colors p-2 hover:bg-white/10 rounded-full" aria-label="LinkedIn">
-                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
-                </a>
-              </div>
-            </div>
-
-            <div className="text-sm text-white/60">
-              © {new Date().getFullYear()} Broco Solutions. Tecnología que funciona.
-            </div>
-          </div>
-        </div>
-      </footer>
 
       {/* WhatsApp FAB */}
       <a
