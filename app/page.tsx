@@ -27,20 +27,13 @@ import {
 import { useRouter } from "next/navigation"
 
 export default function BrocoSolutionsLanding() {
-  const [isTransitioning, setIsTransitioning] = useState(false)
   const heroRef = useRef<HTMLElement>(null)
   const router = useRouter()
   const [sending, setSending] = useState(false)
   const [sendStatus, setSendStatus] = useState<null | "ok" | "error">(null)
 
   const navigateWithTransition = (href: string) => {
-    setIsTransitioning(true)
-    const html = document.documentElement
-    html.classList.add("page-transitioning")
-    document.body.classList.add("page-transitioning")
-    const t = setTimeout(() => router.push(href), 300)
-    // opcional: si el componente desmonta en esos 300ms
-    return () => clearTimeout(t)
+    router.push(href)
   }
 
   const scrollToSection = (sectionId: string) => {
@@ -169,15 +162,7 @@ export default function BrocoSolutionsLanding() {
   ]
 
   return (
-    <div
-      className={`min-h-screen bg-[#0D0D0D] text-white overflow-x-hidden overflow-y-auto touch-pan-y ios-smooth-scroll ${isTransitioning ? "transitioning" : ""}`}
-    >
-      {isTransitioning && (
-        <div className="fixed inset-0 z-[9999] bg-gradient-to-br from-[#7F5AF0] to-[#3E6FA8] transition-opacity duration-300 flex items-center justify-center ">
-          <div className="text-white text-2xl font-bold animate-pulse">Cargando...</div>
-        </div>
-      )}
-
+    <div className="min-h-screen bg-[#0D0D0D] text-white overflow-x-hidden overflow-y-auto touch-pan-y ios-smooth-scroll">
       {/* NAV: barra + dropdown mobile */}
       <SiteNavbar onSectionClick={scrollToSection} />
 
