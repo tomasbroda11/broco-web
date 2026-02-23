@@ -373,7 +373,7 @@ export default function BrocoSolutionsLanding() {
                 },
                 {
                   name: "Rasafertil",
-                  logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/RasafertilLogo-rohyacG29GDJXXdodNmEYI56zz06h.png",
+                  logo: "\public\images\RasafertilLogo.png",
                 },
               ].map((project, index) => (
                 <div
@@ -495,7 +495,7 @@ export default function BrocoSolutionsLanding() {
                         <div className="flex items-start gap-4">
                           <div className="relative w-16 h-16 flex-shrink-0">
                             <Image
-                              src="/images/design-mode/BrocoagroLogo(1).jpeg"
+                              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BrocoagroLogo-5IXhmpYab7akONXntJmmTX4RpWjIDz.jpeg"
                               alt="BrocoAgro"
                               fill
                               className="object-contain rounded"
