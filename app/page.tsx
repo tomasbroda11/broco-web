@@ -364,10 +364,6 @@ export default function BrocoSolutionsLanding() {
                   logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LevainLogo-dXvQoemmlben4ObSzz1krjXjJBrhjO.jpeg",
                 },
                 {
-                  name: "Pavón Arriba Cereales",
-                  logo: null,
-                },
-                {
                   name: "Bertino Integrales",
                   logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BertinoLogo-QonRtxHxxQdvqsuLJ8RbSTaBo38r4f.png",
                 },
