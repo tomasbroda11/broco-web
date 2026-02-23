@@ -581,46 +581,26 @@ export default function EternumPage() {
             </div>
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
               <PricingCard
-                title="Basic"
-                description="Para emprendedores y pequeños negocios"
-                features={[
-                  "Módulos principales",
-                  "1 usuario",
-                  "Gestión de inventario",
-                  "Facturación electrónica",
-                  "Soporte por email",
-                ]}
+                title="CENTURY"
+                description="Startups y Pequeñas Empresas"
+                features={["Implementación rápida, funciones esenciales y módulo base de E-commerce."]}
                 delay={0}
                 addToRefs={addToRefs}
                 openWhatsApp={openWhatsApp}
               />
               <PricingCard
-                title="Pro"
-                description="Para empresas en crecimiento"
-                features={[
-                  "Todos los módulos principales",
-                  "Múltiples usuarios",
-                  "Módulos de industria",
-                  "Multi sucursal",
-                  "Reportes avanzados",
-                  "Soporte prioritario",
-                ]}
+                title="MILLENNIUM"
+                description="PyMEs en expansión"
+                features={["Mayor personalización, módulos avanzados y gestión de procesos específicos."]}
                 highlighted={true}
                 delay={0.1}
                 addToRefs={addToRefs}
                 openWhatsApp={openWhatsApp}
               />
               <PricingCard
-                title="Enterprise"
-                description="Solución personalizada"
-                features={[
-                  "Usuarios ilimitados",
-                  "Multi empresa",
-                  "Multi moneda",
-                  "Implementación dedicada",
-                  "Desarrollo personalizado",
-                  "Soporte 24/7",
-                ]}
+                title="ETERNUM"
+                description="Nivel Corporativo"
+                features={["Gestión compleja, multi-área, alto volumen de datos y auditoría total."]}
                 delay={0.2}
                 addToRefs={addToRefs}
                 openWhatsApp={openWhatsApp}
@@ -840,9 +820,9 @@ interface PricingCardProps {
 function PricingCard({ title, description, features, highlighted, delay, addToRefs, openWhatsApp }: PricingCardProps) {
   const handleClick = () => {
     const planMessages: Record<string, string> = {
-      Basic: "Hola! Me interesa una cotización del plan Basic de Eternum",
-      Pro: "Hola! Quiero conocer más sobre el plan Pro de Eternum",
-      Enterprise: "Hola! Necesito hablar sobre el plan Enterprise de Eternum",
+      CENTURY: "Hola! Me interesa una cotización del plan CENTURY de Eternum",
+      MILLENNIUM: "Hola! Quiero conocer más sobre el plan MILLENNIUM de Eternum",
+      ETERNUM: "Hola! Necesito hablar sobre el plan ETERNUM de Eternum",
     }
     const msg = planMessages[title] ?? "Hola! Me interesa conocer más sobre Eternum"
     openWhatsApp(msg)
