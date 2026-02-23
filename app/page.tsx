@@ -2,7 +2,18 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import Image from "next/image"
+import Link from "next/link"
+import { useState } from "react"
 import {
   Cloud,
   Database,
@@ -18,7 +29,7 @@ import {
   Sparkles,
   Target,
   Rocket,
-  MessageCircle,
+  ExternalLink,
 } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
@@ -146,6 +157,9 @@ export default function BrocoSolutionsLanding() {
             <button onClick={() => scrollToSection("servicios")} className="hover:text-[#7F5AF0] transition-colors">
               Servicios
             </button>
+            <button onClick={() => scrollToSection("proyectos")} className="hover:text-[#7F5AF0] transition-colors">
+              Proyectos
+            </button>
             <button onClick={() => scrollToSection("nosotros")} className="hover:text-[#7F5AF0] transition-colors">
               Nosotros
             </button>
@@ -179,6 +193,9 @@ export default function BrocoSolutionsLanding() {
             </button>
             <button onClick={() => scrollToSection("servicios")} className="py-2 text-left hover:text-[#7F5AF0]">
               Servicios
+            </button>
+            <button onClick={() => scrollToSection("proyectos")} className="py-2 text-left hover:text-[#7F5AF0]">
+              Proyectos
             </button>
             <button onClick={() => scrollToSection("nosotros")} className="py-2 text-left hover:text-[#7F5AF0]">
               Nosotros
@@ -314,6 +331,198 @@ export default function BrocoSolutionsLanding() {
                   )
                 })}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Proyectos */}
+      <section id="proyectos" className="py-32 relative">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16 animate-on-scroll fade-in">
+              <h2 className="text-4xl md:text-6xl font-bold mb-4">
+                <span className="gradient-text-section">Proyectos</span>
+              </h2>
+              <p className="text-xl text-white/70 leading-relaxed">
+                Soluciones tecnológicas implementadas en escenarios reales.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-16 animate-on-scroll fade-in">
+              {[
+                {
+                  name: "PACSA",
+                  logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PacsaLogo-k3WET2DerSqGeEOrPeaqQRCrkpe6SS.jpeg",
+                },
+                {
+                  name: "Colegio de Odontólogos",
+                  logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ColegioLogo-TimPhWM9AczVK7PzSHC2B4MzzSgSnp.png",
+                },
+                {
+                  name: "Levain",
+                  logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LevainLogo-dXvQoemmlben4ObSzz1krjXjJBrhjO.jpeg",
+                },
+                {
+                  name: "Bertino Integrales",
+                  logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BertinoLogo-QonRtxHxxQdvqsuLJ8RbSTaBo38r4f.png",
+                },
+                {
+                  name: "Argwines",
+                  logo: "\public\images\ArgwinesLogo.jpeg",
+                },
+                {
+                  name: "Rasafertil",
+                  logo: "\public\images\RasafertilLogo.png",
+                },
+              ].map((project, index) => (
+                <div
+                  key={index}
+                  className="glass-card rounded-xl p-8 flex items-center justify-center min-h-[120px] hover:border-white/20 transition-colors"
+                >
+                  {project.logo ? (
+                    <div className="relative w-full h-20 grayscale opacity-60 hover:opacity-80 transition-opacity">
+                      <Image
+                        src={project.logo}
+                        alt={project.name}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <div className="text-white/40 text-center font-medium text-sm md:text-base">{project.name}</div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center animate-on-scroll fade-in">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="text-white/80 hover:text-white border border-white/20 hover:border-[#7F5AF0]/50 bg-transparent"
+                  >
+                    Ver detalles de proyectos
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-[#0A0B14]/95 backdrop-blur-xl border-white/10">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-bold text-white">Proyectos</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-8 py-4">
+                    {/* Categoría 1 */}
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-semibold text-[#7F5AF0]">
+                        Automatización y Optimización de Procesos
+                      </h3>
+                      <div className="glass-card rounded-lg p-6 space-y-3">
+                        <h4 className="font-semibold text-white/90">PACSA (Feedlot)</h4>
+                        <p className="text-white/70 text-sm leading-relaxed">
+                          Desarrollo de flujos de automatización corporativa vía WhatsApp. Implementación de enrutamiento
+                          inteligente para derivar consultas al área correspondiente, automatizaciones de RRHH para fechas
+                          importantes del personal, y módulo de difusión gerencial para envío de comunicados masivos sin
+                          necesidad de agendamiento previo.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Categoría 2 */}
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-semibold text-[#7F5AF0]">
+                        Desarrollo a Medida y Transformación Digital
+                      </h3>
+                      <div className="glass-card rounded-lg p-6 space-y-3">
+                        <h4 className="font-semibold text-white/90">
+                          Colegio de Odontólogos de Santa Fe (2da Circunscripción)
+                        </h4>
+                        <p className="text-white/70 text-sm leading-relaxed">
+                          Transformación digital de procesos institucionales. Desarrollo del sistema para la digitalización de
+                          la &apos;Estampilla&apos; del colegio y digitalización integral de documentos formales.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Categoría 3 */}
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-semibold text-[#7F5AF0]">Despliegue ERP y Arquitectura Cloud</h3>
+                      <div className="glass-card rounded-lg p-6 space-y-3">
+                        <h4 className="font-semibold text-white/90">Bar Levain</h4>
+                        <p className="text-white/70 text-sm leading-relaxed">
+                          Despliegue, parametrización y mantenimiento continuo de infraestructura en la nube para el sistema de
+                          gestión integral ERP Odoo.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Categoría 4 */}
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-semibold text-[#7F5AF0]">Desarrollo Web y Posicionamiento Digital</h3>
+                      <div className="space-y-4">
+                        <div className="glass-card rounded-lg p-6 space-y-3">
+                          <h4 className="font-semibold text-white/90">Pavón Arriba Cereales</h4>
+                          <p className="text-white/70 text-sm leading-relaxed">
+                            Sitio web corporativo agroindustrial (www.pavonarribacereales.com.ar).
+                          </p>
+                        </div>
+                        <div className="glass-card rounded-lg p-6 space-y-3">
+                          <h4 className="font-semibold text-white/90">Bertino Integrales</h4>
+                          <p className="text-white/70 text-sm leading-relaxed">
+                            Sitio web institucional para fábrica de aberturas (www.bertinointegrales.com.ar).
+                          </p>
+                        </div>
+                        <div className="glass-card rounded-lg p-6 space-y-3">
+                          <h4 className="font-semibold text-white/90">Argwines</h4>
+                          <p className="text-white/70 text-sm leading-relaxed">
+                            Plataforma web internacional para empresa distribuidora de vinos argentinos en Australia
+                            (www.argwinescompany.com).
+                          </p>
+                        </div>
+                        <div className="glass-card rounded-lg p-6 space-y-3">
+                          <h4 className="font-semibold text-white/90">Rasafertil</h4>
+                          <p className="text-white/70 text-sm leading-relaxed">
+                            Sitio web institucional para empresa de fertilizantes de calidad premium y nutrientes naturales
+                            para suelos.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Categoría 5 */}
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-semibold text-[#7F5AF0]">Desarrollo de Producto Propio</h3>
+                      <div className="glass-card rounded-lg p-6 space-y-4">
+                        <div className="flex items-start gap-4">
+                          <div className="relative w-16 h-16 flex-shrink-0">
+                            <Image
+                              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BrocoagroLogo-5IXhmpYab7akONXntJmmTX4RpWjIDz.jpeg"
+                              alt="BrocoAgro"
+                              fill
+                              className="object-contain rounded"
+                            />
+                          </div>
+                          <div className="flex-1 space-y-3">
+                            <h4 className="font-semibold text-white/90">BrocoAgro</h4>
+                            <p className="text-white/70 text-sm leading-relaxed">
+                              Aplicación integral para la gestión del productor agropecuario. Permite administrar de forma
+                              centralizada trabajos, ingresos, egresos, costos de maquinaria, personal y porcentajes.
+                            </p>
+                            <a
+                              href="https://drive.google.com/file/d/1hY0yCgT_Mm2VmRAX1crmy55eG1lcSE_N/view?usp=drive_link"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-sm text-[#7F5AF0] hover:text-[#9D7FF0] transition-colors"
+                            >
+                              Ver Presentación Comercial online
+                              <ExternalLink className="h-4 w-4" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
@@ -550,10 +759,12 @@ export default function BrocoSolutionsLanding() {
         href="https://wa.me/5493412795326?text=Hola! Me interesa conocer más sobre sus servicios"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 animate-bounce"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20BA5C] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 animate-bounce"
         aria-label="Contactar por WhatsApp"
       >
-        <MessageCircle className="h-6 w-6" />
+        <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
       </a>
     </div>
   )
