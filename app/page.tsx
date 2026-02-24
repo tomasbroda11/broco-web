@@ -312,8 +312,8 @@ export default function BrocoSolutionsLanding() {
             <div className="glass-card rounded-2xl border border-white/10 p-6 md:p-8">
               <div className="max-w-4xl mx-auto text-center space-y-5">
                 <p className="text-base md:text-lg text-white/75 leading-relaxed">
-                  Conozca nuestra metodología de trabajo. Explore nuestra presentación institucional para conocer en detalle
-                  cómo estructuramos nuestras soluciones y generamos valor medible.
+                  Conocé nuestra forma de trabajo.<br />
+                  Mirá nuestra presentación institucional y entendé cómo convertimos ideas en soluciones con impacto.
                 </p>
                 <Button
                   asChild
@@ -325,7 +325,7 @@ export default function BrocoSolutionsLanding() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Ver Brochure Institucional online
+                    Conocé nuestras soluciones
                   </a>
                 </Button>
               </div>
