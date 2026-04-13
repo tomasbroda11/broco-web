@@ -110,6 +110,7 @@ export default function BrocoSolutionsLanding() {
       logoSrc: "/brand/projects/PacsaLogo.png",
       logoAlt: "Logo PACSA",
       category: "Automatización",
+      href: "https://www.pavonarribacereales.com.ar/",
     },
     {
       id: 2,
@@ -118,6 +119,7 @@ export default function BrocoSolutionsLanding() {
       logoSrc: "/brand/projects/ColegioLogo.png",
       logoAlt: "Logo Colegio de Odontólogos",
       category: "Desarrollo a Medida",
+      href: "https://colegio-odontologos.brocosolutions.com/",
     },
     {
       id: 3,
@@ -134,6 +136,7 @@ export default function BrocoSolutionsLanding() {
       logoSrc: "/brand/projects/BertinoLogo.png",
       logoAlt: "Logo Bertino Integrales",
       category: "Desarrollo Web",
+      href: "https://www.bertinointegrales.com.ar/",
     },
     {
       id: 5,
@@ -142,6 +145,7 @@ export default function BrocoSolutionsLanding() {
       logoSrc: "/brand/projects/ArgwinesLogo.jpeg",
       logoAlt: "Logo Argwines",
       category: "Desarrollo Web",
+      href: "https://www.argwinescompany.com/",
     },
     {
       id: 6,
@@ -150,6 +154,7 @@ export default function BrocoSolutionsLanding() {
       logoSrc: "/brand/projects/RasafertilLogo.png",
       logoAlt: "Logo Rasafertil",
       category: "Desarrollo Web",
+      href: "https://rasafertil.brocosolutions.com/",
     },
     {
       id: 7,
@@ -158,6 +163,7 @@ export default function BrocoSolutionsLanding() {
       logoSrc: "/brand/projects/BrocoAgroLogo.jpeg",
       logoAlt: "Logo BrocoAgro",
       category: "Producto Propio",
+      href: "https://agro.brocosolutions.com/",
     },
   ]
 

@@ -11,6 +11,7 @@ export interface ProjectCarouselItem {
   logoSrc: string
   logoAlt: string
   category?: string
+  href?: string
 }
 
 export interface ProjectCarouselProps {
@@ -34,6 +35,7 @@ const DEFAULT_ITEMS: ProjectCarouselItem[] = [
     logoSrc: "/brand/projects/PacsaLogo.png",
     logoAlt: "Logo PACSA",
     category: "Automatización",
+    href: "https://www.pavonarribacereales.com.ar/",
   },
   {
     id: 2,
@@ -42,6 +44,7 @@ const DEFAULT_ITEMS: ProjectCarouselItem[] = [
     logoSrc: "/brand/projects/ColegioLogo.png",
     logoAlt: "Logo Colegio de Odontólogos",
     category: "Desarrollo a Medida",
+    href: "https://colegio-odontologos.brocosolutions.com/",
   },
   {
     id: 3,
@@ -118,8 +121,14 @@ function ProjectCard({
 
   return (
     <div className="relative flex shrink-0 justify-center" style={{ width: slotWidth, zIndex }}>
-      <motion.article
-        className={`relative overflow-hidden rounded-2xl border bg-[#141414] cursor-grab active:cursor-grabbing p-5 sm:p-6 flex h-[320px] sm:h-[340px] flex-col transition-[box-shadow,border-color] duration-300 ${visualClass}`}
+      <motion.a
+        href={item.href}
+        target={item.href ? "_blank" : undefined}
+        rel={item.href ? "noopener noreferrer" : undefined}
+        aria-label={item.href ? `Abrir proyecto ${item.title} en una nueva ventana` : undefined}
+        className={`relative overflow-hidden rounded-2xl border bg-[#141414] p-5 sm:p-6 flex h-[320px] sm:h-[340px] flex-col transition-[box-shadow,border-color] duration-300 ${
+          item.href ? "cursor-pointer" : "cursor-grab active:cursor-grabbing"
+        } ${visualClass}`}
         style={{ width: cardWidth }}
         animate={stateMotion}
         transition={SPRING_OPTIONS}
@@ -155,7 +164,7 @@ function ProjectCard({
             </div>
           )}
         </div>
-      </motion.article>
+      </motion.a>
     </div>
   )
 }
