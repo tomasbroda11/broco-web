@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Montserrat, Open_Sans } from "next/font/google"
+import { Inter, Montserrat, Open_Sans, Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -14,8 +14,22 @@ const openSans = Open_Sans({
   weight: ["400", "500", "600"],
   variable: "--font-open-sans",
 })
+const bricolage = Bricolage_Grotesque({
+  weight: ["400", "600", "700", "800"],
+  subsets: ["latin"],
+  variable: "--font-agro-display",
+})
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-agro-body",
+})
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-agro-mono",
+})
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://brocosolutions.com"),
   title: "Broco Solutions - Menos operación, mas decisión",
   description:
     "Sistemas a medida, automatización, IA y soluciones en la nube para empresas que buscan resultados reales.",
@@ -37,7 +51,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${inter.className} ${montserrat.variable} ${openSans.variable}`}>{children}</body>
+      <body className={`${inter.className} ${montserrat.variable} ${openSans.variable} ${bricolage.variable} ${geist.variable} ${geistMono.variable}`}>{children}</body>
     </html>
   )
 }
