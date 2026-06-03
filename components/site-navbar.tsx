@@ -7,14 +7,19 @@ import { useState } from "react"
 
 type SectionId = "inicio" | "servicios" | "proyectos" | "nosotros" | "contacto"
 
+type NavSection = { id: SectionId; label: string; href: string }
+type NavRoute = { id: "brocoagro"; label: string; href: string }
+type NavItem = NavSection | NavRoute
+
 type SiteNavbarProps = {
   activeSection?: SectionId
   onSectionClick?: (sectionId: SectionId) => void
 }
 
-const sections: Array<{ id: SectionId; label: string; href: string }> = [
+const sections: NavItem[] = [
   { id: "inicio", label: "Inicio", href: "/#inicio" },
   { id: "servicios", label: "Servicios", href: "/#servicios" },
+  { id: "brocoagro", label: "BrocoAgro", href: "/brocoagro" },
   { id: "proyectos", label: "Proyectos", href: "/#proyectos" },
   { id: "nosotros", label: "Nosotros", href: "/#nosotros" },
   { id: "contacto", label: "Contacto", href: "/#contacto" },
@@ -23,14 +28,14 @@ const sections: Array<{ id: SectionId; label: string; href: string }> = [
 export function SiteNavbar({ activeSection, onSectionClick }: SiteNavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const renderNavAction = (section: (typeof sections)[number], mobile = false) => {
+  const renderNavAction = (section: NavItem, mobile = false) => {
     const baseClass = mobile ? "py-2 text-left transition-colors" : "transition-colors"
     const stateClass =
       activeSection === section.id
         ? "text-white font-medium"
         : "text-white/85 hover:text-[#7F5AF0]"
 
-    if (onSectionClick) {
+    if (onSectionClick && section.id !== "brocoagro") {
       return (
         <button
           key={section.id}
