@@ -243,24 +243,30 @@
 
 /* Service Cards */
 .service-card {
-  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100%;
+  background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 24px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .service-card:hover {
   transform: translateY(-5px);
   border-color: rgba(127, 90, 240, 0.3);
-  box-shadow: 0 10px 30px rgba(127, 90, 240, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 24px rgba(127, 90, 240, 0.12);
 }
 
 .service-card.featured-service {
   border-color: rgba(127, 90, 240, 0.5);
-  background: rgba(127, 90, 240, 0.05);
+  background: rgba(127, 90, 240, 0.06);
 }
 
 .service-icon {
@@ -272,12 +278,68 @@
   align-items: center;
   justify-content: center;
   color: #7f5af0;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .service-card:hover .service-icon {
   background: rgba(127, 90, 240, 0.2);
   transform: scale(1.1);
+}
+
+.service-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(127, 90, 240, 0.12);
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+}
+
+.service-title {
+  margin-bottom: 10px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover .service-title {
+  color: #7f5af0;
+}
+
+.service-description {
+  max-width: 34ch;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.service-cta {
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.82);
+  transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+.service-card:hover .service-cta {
+  border-color: rgba(127, 90, 240, 0.45);
+  background: rgba(127, 90, 240, 0.08);
+  color: white;
 }
 
 /* Diagonal Background */
@@ -474,6 +536,15 @@ html {
     padding: 20px;
   }
 
+  .service-badge {
+    padding: 5px 9px;
+    font-size: 10px;
+  }
+
+  .service-description {
+    max-width: none;
+  }
+
   .stats-grid {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 16px;
@@ -485,3 +556,65 @@ div[id^="v0-built-with-button"] {
   visibility: hidden !important;
   opacity: 0 !important;
 }
+
+/* =====================================================
+ * BROCOAGRO PITCH — Theming scopeado
+ * Solo aplica dentro de elementos con clase .theme-agro
+ * ===================================================== */
+
+.theme-agro {
+  --agro-violet: #6a11cb;
+  --agro-blue-bright: #2575fc;
+  --agro-blue-deep: #193582;
+  --agro-whatsapp: #25D366;
+  --agro-ink: #0A0E1A;
+  --agro-ink-soft: #141927;
+  --agro-bone: #F5F2EC;
+  --agro-bone-dim: #A8A39B;
+
+  background-color: var(--agro-ink);
+  color: var(--agro-bone);
+  font-family: var(--font-agro-body), system-ui, sans-serif;
+
+  color-scheme: dark;
+}
+
+.theme-agro ::selection {
+  background-color: var(--agro-violet);
+  color: var(--agro-bone);
+}
+
+/* Aurora blob base */
+.theme-agro .aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+@keyframes agro-aurora {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30%, -20%) scale(1.1); }
+  66% { transform: translate(-20%, 20%) scale(0.95); }
+}
+
+@keyframes agro-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes agro-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes agro-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(37, 211, 102, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(37, 211, 102, 0.6); }
+}
+
+.theme-agro .animate-agro-aurora { animation: agro-aurora 60s linear infinite; }
+.theme-agro .animate-agro-marquee { animation: agro-marquee 40s linear infinite; }
+.theme-agro .animate-agro-float { animation: agro-float 6s ease-in-out infinite; }
+.theme-agro .animate-agro-glow { animation: agro-glow 3s ease-in-out infinite; }

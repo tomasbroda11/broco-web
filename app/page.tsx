@@ -11,7 +11,6 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import {
   Cloud,
-  Database,
   Mail,
   MapPin,
   Phone,
@@ -23,6 +22,7 @@ import {
   Sparkles,
   Target,
   Rocket,
+  Sprout,
 } from "lucide-react"
 import { useRouter } from "next/navigation"
 
@@ -44,7 +44,7 @@ export default function BrocoSolutionsLanding() {
   }
 
   useEffect(() => {
-    router.prefetch("/eternum")
+    router.prefetch("/brocoagro")
     router.prefetch("/automatizaciones")
   }, [router])
 
@@ -68,11 +68,12 @@ export default function BrocoSolutionsLanding() {
 
   const services = [
     {
-      icon: <Database className="h-6 w-6" />,
-      title: "Eternum ERP",
-      description: "Sistema modular que centraliza y automatiza todas las operaciones de tu empresa.",
-      highlight: "Producto estrella",
-      link: "/eternum",
+      icon: <Sprout className="h-6 w-6" />,
+      title: "BrocoAgro",
+      description:
+        "El primer ERP agropecuario conversacional. Stock, gastos, cosecha y ventas — gestionado desde WhatsApp con un agente de IA que entiende el campo argentino.",
+      highlight: "Nuevo",
+      link: "/brocoagro",
     },
     {
       icon: <Zap className="h-6 w-6" />,
@@ -110,6 +111,7 @@ export default function BrocoSolutionsLanding() {
       logoSrc: "/brand/projects/PacsaLogo.png",
       logoAlt: "Logo PACSA",
       category: "Automatización",
+      href: "https://www.pavonarribacereales.com.ar/",
     },
     {
       id: 2,
@@ -118,6 +120,7 @@ export default function BrocoSolutionsLanding() {
       logoSrc: "/brand/projects/ColegioLogo.png",
       logoAlt: "Logo Colegio de Odontólogos",
       category: "Desarrollo a Medida",
+      href: "https://colegio-odontologos.brocosolutions.com/",
     },
     {
       id: 3,
@@ -134,6 +137,7 @@ export default function BrocoSolutionsLanding() {
       logoSrc: "/brand/projects/BertinoLogo.png",
       logoAlt: "Logo Bertino Integrales",
       category: "Desarrollo Web",
+      href: "https://www.bertinointegrales.com.ar/",
     },
     {
       id: 5,
@@ -142,6 +146,7 @@ export default function BrocoSolutionsLanding() {
       logoSrc: "/brand/projects/ArgwinesLogo.jpeg",
       logoAlt: "Logo Argwines",
       category: "Desarrollo Web",
+      href: "https://www.argwinescompany.com/",
     },
     {
       id: 6,
@@ -150,6 +155,7 @@ export default function BrocoSolutionsLanding() {
       logoSrc: "/brand/projects/RasafertilLogo.png",
       logoAlt: "Logo Rasafertil",
       category: "Desarrollo Web",
+      href: "https://rasafertil.brocosolutions.com/",
     },
     {
       id: 7,
@@ -158,6 +164,7 @@ export default function BrocoSolutionsLanding() {
       logoSrc: "/brand/projects/BrocoAgroLogo.jpeg",
       logoAlt: "Logo BrocoAgro",
       category: "Producto Propio",
+      href: "https://agro.brocosolutions.com/",
     },
   ]
 
@@ -209,8 +216,8 @@ export default function BrocoSolutionsLanding() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 mb-12">
-              <Button onClick={() => navigateWithTransition("/eternum")} className="hero-cta group cursor-pointer">
-                <span>Ver Eternum</span>
+              <Button onClick={() => navigateWithTransition("/brocoagro")} className="hero-cta group cursor-pointer">
+                <span>Conocé BrocoAgro</span>
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
@@ -248,28 +255,17 @@ export default function BrocoSolutionsLanding() {
             </div>
 
             <div className="lg:col-span-7 animate-on-scroll slide-in-right">
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid auto-rows-fr md:grid-cols-2 gap-6">
                 {services.map((service, index) => {
                   const clickable = Boolean(service.link)
                   const go = () => service.link && navigateWithTransition(service.link!)
 
                   return (
-                    <div key={index} className="relative">
-                      {service.highlight && (
-                        <div className="absolute -top-4 -right-4 z-50 bg-gradient-to-r from-[#7F5AF0] to-[#3E6FA8] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-2xl border border-white/20">
-                          <span className="flex items-center gap-1">
-                            <Sparkles className="h-3 w-3" />
-                            Estrella
-                          </span>
-                        </div>
-                      )}
-
-                      {/* CARD */}
+                    <div key={index} className="h-full">
                       <div
-                        className={`service-card group rounded-xl
-                                    p-5 min-h-[9.5rem] flex flex-col justify-start
-                                    ${service.highlight ? "featured-service" : ""}
-                                    ${clickable ? "cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/20" : ""}`}
+                        className={`service-card group h-full ${service.highlight ? "featured-service" : ""} ${
+                          clickable ? "cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/20" : ""
+                        }`}
                         style={{ animationDelay: `${index * 0.1}s` }}
                         onClick={go}
                         onKeyDown={(e) => clickable && (e.key === "Enter" || e.key === " ") && go()}
@@ -277,29 +273,27 @@ export default function BrocoSolutionsLanding() {
                         tabIndex={clickable ? 0 : -1}
                         aria-label={clickable ? `Abrir ${service.title}` : undefined}
                       >
-                        <div className="flex items-start gap-4">
+                        <div className="flex items-start justify-between gap-4">
                           <div className="service-icon flex-shrink-0">{service.icon}</div>
-
-                          <div className="flex-1">
-                            <h3 className="font-semibold text-white mb-2 group-hover:text-[#7F5AF0] transition-colors">
-                              {service.title}
-                            </h3>
-
-                            <p className="text-sm text-white/60 leading-relaxed">{service.description}</p>
-
-                            {/* Indicador de click: sólo si tiene link */}
-                            {clickable && (
-                              <span
-                                className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium
-                                          text-white/80 border border-white/15 rounded-full px-3 py-1
-                                          transition-all group-hover:text-white group-hover:border-[#7F5AF0]/50"
-                              >
-                                Conocé más
-                                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                              </span>
-                            )}
-                          </div>
+                          {service.highlight && (
+                            <div className="service-badge">
+                              <Sparkles className="h-3 w-3" />
+                              <span>{service.highlight}</span>
+                            </div>
+                          )}
                         </div>
+
+                        <div className="mt-6 flex-1">
+                          <h3 className="service-title">{service.title}</h3>
+                          <p className="service-description">{service.description}</p>
+                        </div>
+
+                        {clickable && (
+                          <span className="service-cta">
+                            Conocé más
+                            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                          </span>
+                        )}
                       </div>
                     </div>
                   )
@@ -312,8 +306,8 @@ export default function BrocoSolutionsLanding() {
             <div className="glass-card rounded-2xl border border-white/10 p-6 md:p-8">
               <div className="max-w-4xl mx-auto text-center space-y-5">
                 <p className="text-base md:text-lg text-white/75 leading-relaxed">
-                  Conozca nuestra metodología de trabajo. Explore nuestra presentación institucional para conocer en detalle
-                  cómo estructuramos nuestras soluciones y generamos valor medible.
+                  Conocé nuestra forma de trabajo.<br />
+                  Mirá nuestra presentación institucional y entendé cómo convertimos ideas en soluciones con impacto.
                 </p>
                 <Button
                   asChild
@@ -325,7 +319,7 @@ export default function BrocoSolutionsLanding() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Ver Brochure Institucional online
+                    Conocé nuestras soluciones
                   </a>
                 </Button>
               </div>
