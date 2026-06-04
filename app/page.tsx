@@ -178,11 +178,11 @@ export default function BrocoSolutionsLanding() {
       <section
         ref={heroRef}
         id="inicio"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32"
+        className="home-hero relative min-h-screen flex items-center justify-center overflow-hidden pt-32"
       >
-        <div className="absolute inset-0 animated-bg pointer-events-none">
-          <div className="floating-orbs" />
-          <div className="grid-pattern" />
+        <div className="home-hero-bg absolute inset-0 animated-bg pointer-events-none">
+          <div className="floating-orbs home-hero-orbs" />
+          <div className="grid-pattern home-hero-grid" />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 text-center">
@@ -201,9 +201,9 @@ export default function BrocoSolutionsLanding() {
                 <span className="inline-block min-w-[16ch] text-center">
                   <TextType
                     text={["Más decisión.", "Más control.", "Más productividad.", "Más trazabilidad."]}
-                    typingSpeed={65}
-                    deletingSpeed={35}
-                    pauseDuration={1500}
+                    typingSpeed={82}
+                    deletingSpeed={28}
+                    pauseDuration={2400}
                     showCursor
                     cursorCharacter="▎"
                     startOnVisible={true}
