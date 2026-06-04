@@ -216,15 +216,20 @@ export default function BrocoSolutionsLanding() {
               Sistemas a medida, automatización, IA y soluciones en la nube para empresas que buscan resultados reales
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 mb-12">
-              <Button onClick={() => navigateWithTransition("/brocoagro")} className="hero-cta group cursor-pointer">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-5 mb-12">
+              <Button
+                onClick={() => navigateWithTransition("/brocoagro")}
+                size="lg"
+                className="hero-cta hero-cta-primary group cursor-pointer"
+              >
                 <span>Conocé BrocoAgro</span>
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
                 onClick={() => scrollToSection("servicios")}
-                variant="ghost"
-                className="text-white/80 hover:text-white border border-white/20 hover:border-[#7F5AF0]/50 cursor-pointer"
+                variant="outline"
+                size="lg"
+                className="hero-cta-secondary cursor-pointer"
               >
                 Explorar servicios
               </Button>
