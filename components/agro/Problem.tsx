@@ -43,7 +43,7 @@ export function Problem() {
               alt="Productores en el campo argentino"
               width={1200}
               height={800}
-              className="h-full w-full object-cover object-[center_35%] brightness-90 contrast-105"
+              className="h-full w-full object-cover object-[center_27%] brightness-90 contrast-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[var(--agro-ink)] via-transparent to-transparent" />
           </motion.div>
