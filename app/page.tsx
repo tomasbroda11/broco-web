@@ -242,8 +242,8 @@ export default function BrocoSolutionsLanding() {
       <section id="servicios" className="py-32 relative">
         <div className="absolute inset-0 diagonal-bg pointer-events-none" />
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5 animate-on-scroll slide-in-left">
+          <div className="grid gap-10 xl:grid-cols-12 xl:gap-12 xl:items-center">
+            <div className="max-w-2xl xl:col-span-5 xl:max-w-none animate-on-scroll slide-in-left">
               <div className="space-y-6">
                 <div className="inline-flex items-center space-x-2 glass-badge px-3 py-1 rounded-full text-sm">
                   <Target className="h-4 w-4 text-[#3E6FA8]" />
@@ -260,8 +260,8 @@ export default function BrocoSolutionsLanding() {
               </div>
             </div>
 
-            <div className="lg:col-span-7 animate-on-scroll slide-in-right">
-              <div className="grid auto-rows-fr md:grid-cols-2 gap-6">
+            <div className="xl:col-span-7 animate-on-scroll slide-in-right">
+              <div className="grid auto-rows-fr gap-5 md:grid-cols-2 md:gap-6">
                 {services.map((service, index) => {
                   const clickable = Boolean(service.link)
                   const isAgro = service.accent === "agro"
