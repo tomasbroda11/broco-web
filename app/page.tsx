@@ -192,13 +192,13 @@ export default function BrocoSolutionsLanding() {
               <span>Tecnología que transforma empresas</span>
             </div>
 
-           <h1 className="mx-auto font-black leading-[0.95] text-white text-[clamp(2.1rem,8vw,7rem)]">
-              <span className="block whitespace-nowrap">
+           <h1 className="mx-auto max-w-[13ch] font-black leading-[0.98] text-white text-[clamp(2.1rem,8vw,7rem)] sm:max-w-none sm:leading-[0.95]">
+              <span className="block text-balance sm:whitespace-nowrap">
                 Menos operación.
               </span>
 
-              <span className="mt-2 block h-[1.1em] whitespace-nowrap">
-                <span className="inline-block min-w-[16ch] text-center">
+              <span className="mt-2 block min-h-[2.2em] text-balance sm:min-h-0 sm:h-[1.1em] sm:whitespace-nowrap">
+                <span className="inline-flex max-w-full justify-center text-center sm:min-w-[16ch]">
                   <TextType
                     text={["Más decisión.", "Más control.", "Más productividad.", "Más trazabilidad."]}
                     typingSpeed={82}
@@ -207,7 +207,7 @@ export default function BrocoSolutionsLanding() {
                     showCursor
                     cursorCharacter="▎"
                     startOnVisible={true}
-                    className="inline-block"
+                    className="inline-block max-w-full whitespace-normal sm:whitespace-nowrap"
                   />
                 </span>
               </span>
