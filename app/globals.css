@@ -133,6 +133,109 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.brocoagro-nav-link {
+  --brocoagro-accent: #16a34a;
+  --brocoagro-accent-strong: #22c55e;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.brocoagro-nav-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.28rem;
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(22, 163, 74, 0.92), rgba(34, 197, 94, 0.96));
+  transform: scaleX(0.2);
+  transform-origin: left center;
+  opacity: 0;
+  transition:
+    transform 180ms cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 160ms ease-out;
+}
+
+.brocoagro-nav-link__text {
+  position: relative;
+  z-index: 1;
+}
+
+.brocoagro-nav-link__tag {
+  position: relative;
+  z-index: 1;
+  margin-left: 0.5rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: rgba(34, 197, 94, 0.76);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brocoagro-nav-link:hover {
+    color: var(--brocoagro-accent-strong);
+  }
+
+  .brocoagro-nav-link:hover::before {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.brocoagro-nav-link:focus-visible {
+  color: var(--brocoagro-accent-strong);
+  border-radius: 0.35rem;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+  outline: none;
+}
+
+.brocoagro-nav-link:focus-visible::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.brocoagro-nav-link-mobile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5rem 0;
+  color: rgba(34, 197, 94, 0.92);
+  text-align: left;
+}
+
+.brocoagro-nav-link-mobile .brocoagro-nav-link__text {
+  flex: 1;
+}
+
+.brocoagro-nav-link-mobile .brocoagro-nav-link__tag {
+  margin-left: auto;
+}
+
+.brocoagro-nav-link-mobile::before {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brocoagro-nav-link,
+  .brocoagro-nav-link::before {
+    transition: none;
+  }
+
+  .brocoagro-nav-link:hover::before,
+  .brocoagro-nav-link:focus-visible::before {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
 .glass-badge {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);

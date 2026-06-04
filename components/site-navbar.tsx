@@ -29,11 +29,23 @@ export function SiteNavbar({ activeSection, onSectionClick }: SiteNavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const renderNavAction = (section: NavItem, mobile = false) => {
-    const baseClass = mobile ? "py-2 text-left transition-colors" : "transition-colors"
-    const stateClass =
-      activeSection === section.id
-        ? "text-white font-medium"
-        : "text-white/85 hover:text-[#7F5AF0]"
+    const isBrocoAgro = section.id === "brocoagro"
+    const isActive = activeSection === section.id
+    const baseClass = mobile
+      ? "py-2 text-left transition-colors"
+      : "transition-colors focus-visible:outline-none"
+    const stateClass = isActive ? "text-white font-medium" : "text-white/85 hover:text-[#7F5AF0]"
+    const sharedClass = isBrocoAgro
+      ? mobile
+        ? "brocoagro-nav-link brocoagro-nav-link-mobile"
+        : "brocoagro-nav-link"
+      : `${baseClass} ${stateClass}`
+    const label = (
+      <>
+        <span className="brocoagro-nav-link__text">{section.label}</span>
+        {mobile && <span className="brocoagro-nav-link__tag">Nuevo</span>}
+      </>
+    )
 
     if (onSectionClick && section.id !== "brocoagro") {
       return (
@@ -43,9 +55,9 @@ export function SiteNavbar({ activeSection, onSectionClick }: SiteNavbarProps) {
             onSectionClick(section.id)
             setIsMenuOpen(false)
           }}
-          className={`${baseClass} ${stateClass}`}
+          className={sharedClass}
         >
-          {section.label}
+          {isBrocoAgro ? label : section.label}
         </button>
       )
     }
@@ -55,9 +67,9 @@ export function SiteNavbar({ activeSection, onSectionClick }: SiteNavbarProps) {
         key={section.id}
         href={section.href}
         onClick={() => setIsMenuOpen(false)}
-        className={`${baseClass} ${stateClass}`}
+        className={sharedClass}
       >
-        {section.label}
+        {isBrocoAgro ? label : section.label}
       </Link>
     )
   }
