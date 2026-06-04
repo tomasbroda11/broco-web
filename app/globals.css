@@ -372,6 +372,36 @@
   background: rgba(127, 90, 240, 0.06);
 }
 
+.service-card-agro {
+  border-color: rgba(46, 125, 82, 0.34);
+  background:
+    linear-gradient(180deg, rgba(30, 84, 58, 0.16), rgba(127, 90, 240, 0.05) 46%, rgba(255, 255, 255, 0.025) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(220, 255, 234, 0.05),
+    0 0 0 1px rgba(46, 125, 82, 0.08);
+}
+
+.service-card-agro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(72, 187, 120, 0.12), transparent 34%),
+    radial-gradient(circle at 0% 100%, rgba(62, 111, 168, 0.12), transparent 30%);
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.service-card-agro:hover {
+  transform: translateY(-6px);
+  border-color: rgba(72, 187, 120, 0.52);
+  background:
+    linear-gradient(180deg, rgba(34, 96, 66, 0.2), rgba(127, 90, 240, 0.06) 46%, rgba(255, 255, 255, 0.035) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(220, 255, 234, 0.08),
+    0 10px 24px rgba(18, 58, 39, 0.22);
+}
+
 .service-icon {
   width: 48px;
   height: 48px;
@@ -389,6 +419,15 @@
   transform: scale(1.1);
 }
 
+.service-icon-agro {
+  background: rgba(46, 125, 82, 0.16);
+  color: #7cd39a;
+}
+
+.service-card-agro:hover .service-icon-agro {
+  background: rgba(46, 125, 82, 0.26);
+}
+
 .service-badge {
   display: inline-flex;
   align-items: center;
@@ -404,6 +443,13 @@
   white-space: nowrap;
 }
 
+.service-badge-agro {
+  border-color: rgba(124, 211, 154, 0.18);
+  background: rgba(34, 92, 64, 0.22);
+  color: rgba(216, 255, 228, 0.94);
+  box-shadow: inset 0 1px 0 rgba(216, 255, 228, 0.05);
+}
+
 .service-title {
   margin-bottom: 10px;
   font-size: 1.125rem;
@@ -415,6 +461,10 @@
 
 .service-card:hover .service-title {
   color: #7f5af0;
+}
+
+.service-card-agro:hover .service-title {
+  color: #8ce0a8;
 }
 
 .service-description {
@@ -443,6 +493,18 @@
   border-color: rgba(127, 90, 240, 0.45);
   background: rgba(127, 90, 240, 0.08);
   color: white;
+}
+
+.service-cta-agro {
+  border-color: rgba(124, 211, 154, 0.16);
+  color: rgba(220, 255, 234, 0.88);
+  background: rgba(34, 92, 64, 0.12);
+}
+
+.service-card-agro:hover .service-cta-agro {
+  border-color: rgba(124, 211, 154, 0.32);
+  background: rgba(34, 92, 64, 0.22);
+  color: #f5fff7;
 }
 
 /* Diagonal Background */

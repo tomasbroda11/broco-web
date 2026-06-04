@@ -73,6 +73,7 @@ export default function BrocoSolutionsLanding() {
       description:
         "El primer ERP agropecuario conversacional. Stock, gastos, cosecha y ventas — gestionado desde WhatsApp con un agente de IA que entiende el campo argentino.",
       highlight: "Nuevo",
+      accent: "agro",
       link: "/brocoagro",
     },
     {
@@ -258,12 +259,15 @@ export default function BrocoSolutionsLanding() {
               <div className="grid auto-rows-fr md:grid-cols-2 gap-6">
                 {services.map((service, index) => {
                   const clickable = Boolean(service.link)
+                  const isAgro = service.accent === "agro"
                   const go = () => service.link && navigateWithTransition(service.link!)
 
                   return (
                     <div key={index} className="h-full">
                       <div
                         className={`service-card group h-full ${service.highlight ? "featured-service" : ""} ${
+                          isAgro ? "service-card-agro" : ""
+                        } ${
                           clickable ? "cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/20" : ""
                         }`}
                         style={{ animationDelay: `${index * 0.1}s` }}
@@ -274,9 +278,9 @@ export default function BrocoSolutionsLanding() {
                         aria-label={clickable ? `Abrir ${service.title}` : undefined}
                       >
                         <div className="flex items-start justify-between gap-4">
-                          <div className="service-icon flex-shrink-0">{service.icon}</div>
+                          <div className={`service-icon flex-shrink-0 ${isAgro ? "service-icon-agro" : ""}`}>{service.icon}</div>
                           {service.highlight && (
-                            <div className="service-badge">
+                            <div className={`service-badge ${isAgro ? "service-badge-agro" : ""}`}>
                               <Sparkles className="h-3 w-3" />
                               <span>{service.highlight}</span>
                             </div>
@@ -289,7 +293,7 @@ export default function BrocoSolutionsLanding() {
                         </div>
 
                         {clickable && (
-                          <span className="service-cta">
+                          <span className={`service-cta ${isAgro ? "service-cta-agro" : ""}`}>
                             Conocé más
                             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                           </span>
