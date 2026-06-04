@@ -93,7 +93,7 @@ export function SiteNavbar({ activeSection, onSectionClick }: SiteNavbarProps) {
           </Link>
         )}
 
-        <div className="hidden md:flex items-center gap-6 text-sm">
+        <div className="hidden lg:flex items-center gap-6 text-sm">
           {sections.map((section) => renderNavAction(section))}
         </div>
 
@@ -101,7 +101,7 @@ export function SiteNavbar({ activeSection, onSectionClick }: SiteNavbarProps) {
           aria-label="Abrir menú"
           aria-expanded={isMenuOpen}
           aria-controls="site-mobile-menu"
-          className="md:hidden inline-flex items-center justify-center rounded p-2 focus:outline-none"
+          className="lg:hidden inline-flex items-center justify-center rounded p-2 focus:outline-none"
           onClick={() => setIsMenuOpen((open) => !open)}
         >
           <Menu className="h-5 w-5" />
@@ -110,7 +110,7 @@ export function SiteNavbar({ activeSection, onSectionClick }: SiteNavbarProps) {
 
       <div
         id="site-mobile-menu"
-        className={`md:hidden transition-all duration-200 overflow-hidden mt-2 rounded-2xl glass-nav ${
+        className={`lg:hidden transition-all duration-200 overflow-hidden mt-2 rounded-2xl glass-nav ${
           isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
         }`}
       >
