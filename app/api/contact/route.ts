@@ -4,7 +4,7 @@ export const runtime = "nodejs"; // también anda en 'edge' si preferís
 
 export async function POST(req: Request) {
   try {
-    const { name, email, company, message, hp } = await req.json();
+    const { name, email, company, industry, budget, message, hp } = await req.json();
 
     // Honeypot anti-bots
     if (hp) return NextResponse.json({ ok: true });
@@ -20,6 +20,8 @@ export async function POST(req: Request) {
     const text = `Nombre: ${name}
 Email: ${email}
 Empresa: ${company || "-"}
+Industria: ${industry || "-"}
+Presupuesto estimado: ${budget || "-"}
 Mensaje:
 ${message}`;
 
@@ -28,6 +30,8 @@ ${message}`;
       <p><strong>Nombre:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Empresa:</strong> ${company || "-"}</p>
+      <p><strong>Industria:</strong> ${industry || "-"}</p>
+      <p><strong>Presupuesto estimado:</strong> ${budget || "-"}</p>
       <p><strong>Mensaje:</strong></p>
       <pre style="white-space:pre-wrap;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,'Liberation Mono','Courier New',monospace;">${message}</pre>
     `;

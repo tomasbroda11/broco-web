@@ -6,6 +6,13 @@ import { ProjectCarousel, type ProjectCarouselItem } from "@/components/ui/proje
 import { TextType } from "@/components/ui/text-type"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
@@ -31,6 +38,7 @@ export default function BrocoSolutionsLanding() {
   const router = useRouter()
   const [sending, setSending] = useState(false)
   const [sendStatus, setSendStatus] = useState<null | "ok" | "error">(null)
+  const [budgetValue, setBudgetValue] = useState("")
 
   const navigateWithTransition = (href: string) => {
     router.push(href)
@@ -458,6 +466,8 @@ export default function BrocoSolutionsLanding() {
                         name: String(data.get("name") || ""),
                         email: String(data.get("email") || ""),
                         company: String(data.get("company") || ""),
+                        industry: String(data.get("industry") || ""),
+                        budget: String(data.get("budget") || ""),
                         message: String(data.get("message") || ""),
                         hp: String(data.get("hp") || ""), // honeypot
                       }
@@ -474,6 +484,7 @@ export default function BrocoSolutionsLanding() {
                         if (!res.ok || !json.ok) throw new Error(json.error || "Error")
                         setSendStatus("ok")
                         form.reset()
+                        setBudgetValue("")
                       } catch (err) {
                         setSendStatus("error")
                       } finally {
@@ -490,6 +501,37 @@ export default function BrocoSolutionsLanding() {
                     </div>
 
                     <Input name="company" placeholder="Empresa" className="modern-input" />
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <div className="space-y-2">
+                        <Label htmlFor="contact-industry" className="text-white/80">
+                          Industria
+                        </Label>
+                        <Input
+                          id="contact-industry"
+                          name="industry"
+                          placeholder="Ej: Agro, salud, retail, industria, servicios"
+                          className="modern-input"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="contact-budget" className="text-white/80">
+                          Presupuesto estimado
+                        </Label>
+                        <input type="hidden" name="budget" value={budgetValue} />
+                        <Select value={budgetValue} onValueChange={setBudgetValue}>
+                          <SelectTrigger id="contact-budget" aria-label="Presupuesto estimado">
+                            <SelectValue placeholder="Seleccionar" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="USD 400 - 800">USD 400 - 800</SelectItem>
+                            <SelectItem value="USD 800 - 2.000">USD 800 - 2.000</SelectItem>
+                            <SelectItem value="USD 2.000 - 5.000">USD 2.000 - 5.000</SelectItem>
+                            <SelectItem value="USD 5.000 - 10.000">USD 5.000 - 10.000</SelectItem>
+                            <SelectItem value="USD +10.000">USD +10.000</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
                     <Textarea
                       name="message"
                       placeholder="Contanos sobre tu proyecto..."
