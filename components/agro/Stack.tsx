@@ -112,11 +112,49 @@ export function Stack() {
         </motion.div>
 
         <div className="mt-20">
-          <div className="relative hidden md:block">
+          <div className="hidden md:block xl:hidden">
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+              {nodes.map((node, index) => {
+                const Icon = node.Icon;
+
+                return (
+                  <motion.div
+                    key={node.label}
+                    initial={{ opacity: 0, transform: "translateY(20px)" }}
+                    whileInView={{ opacity: 1, transform: "translateY(0px)" }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    className={`rounded-2xl border border-[var(--agro-bone)]/10 bg-[var(--agro-ink-soft)]/85 p-5 text-center ${
+                      index === nodes.length - 1 ? "md:col-span-2 md:max-w-[26rem] md:justify-self-center lg:col-span-1 lg:max-w-none" : ""
+                    }`}
+                  >
+                    <div className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-full border border-[var(--agro-bone)]/10 bg-[var(--agro-ink)] p-2">
+                      <div className={`flex h-full w-full items-center justify-center rounded-full border ${node.ring} ${node.surface} ${node.glow}`}>
+                        <Icon className="size-8" strokeWidth={1.9} />
+                      </div>
+                    </div>
+
+                    <div className="mt-5 font-[family-name:var(--font-agro-mono)] text-[11px] uppercase tracking-[0.22em] text-[var(--agro-bone-dim)]">
+                      {node.label}
+                    </div>
+
+                    <div
+                      className="mx-auto mt-4 mb-3 h-1.5 w-10 rounded-full"
+                      style={{ backgroundColor: node.stroke }}
+                      aria-hidden="true"
+                    />
+                    <p className="text-sm leading-6 text-[var(--agro-bone)]/88">{node.description}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="relative hidden xl:block">
             <div className="pointer-events-none absolute left-[10%] right-[10%] top-10 h-px bg-[linear-gradient(90deg,rgba(245,242,236,0)_0%,rgba(245,242,236,0.2)_10%,rgba(245,242,236,0.2)_90%,rgba(245,242,236,0)_100%)]" />
             <div className="pointer-events-none absolute left-[10%] right-[10%] top-10 h-px border-t border-dashed border-[var(--agro-bone)]/15" />
 
-            <div className="grid grid-cols-5 gap-5 lg:gap-6">
+            <div className="grid grid-cols-5 gap-6">
               {nodes.map((node, index) => {
                 const Icon = node.Icon;
 
