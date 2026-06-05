@@ -16,6 +16,7 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
+import { z } from "zod"
 import {
   Cloud,
   Mail,
@@ -33,12 +34,43 @@ import {
 } from "lucide-react"
 import { useRouter } from "next/navigation"
 
+const contactFormSchema = z.object({
+  name: z.string().trim().min(1, "Nombre requerido"),
+  email: z.string().trim().email("Email inválido"),
+  whatsapp: z
+    .string()
+    .trim()
+    .optional()
+    .refine((value) => !value || /^\+?[\d\s\-()]+$/.test(value), "WhatsApp inválido"),
+  company: z.string().trim().optional(),
+  industry: z.string().trim().optional(),
+  budget: z.string().trim().optional(),
+  message: z.string().trim().min(1, "Mensaje requerido"),
+  fbclid: z.string().trim().optional(),
+  fbc: z.string().trim().optional(),
+  fbp: z.string().trim().optional(),
+  hp: z.string().trim().optional(),
+})
+
+const FBCLID_STORAGE_KEY = "broco.fbclid"
+
+function getCookieValue(name: string) {
+  if (typeof document === "undefined") return ""
+
+  const cookie = document.cookie
+    .split("; ")
+    .find((entry) => entry.startsWith(`${name}=`))
+
+  return cookie ? decodeURIComponent(cookie.split("=").slice(1).join("=")) : ""
+}
+
 export default function BrocoSolutionsLanding() {
   const heroRef = useRef<HTMLElement>(null)
   const router = useRouter()
   const [sending, setSending] = useState(false)
   const [sendStatus, setSendStatus] = useState<null | "ok" | "error">(null)
   const [budgetValue, setBudgetValue] = useState("")
+  const [storedFbclid, setStoredFbclid] = useState("")
 
   const navigateWithTransition = (href: string) => {
     router.push(href)
@@ -55,6 +87,21 @@ export default function BrocoSolutionsLanding() {
     router.prefetch("/brocoagro")
     router.prefetch("/automatizaciones")
   }, [router])
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    const params = new URLSearchParams(window.location.search)
+    const fbclidFromQuery = params.get("fbclid")?.trim() ?? ""
+    const persistedFbclid = window.localStorage.getItem(FBCLID_STORAGE_KEY)?.trim() ?? ""
+    const nextFbclid = fbclidFromQuery || persistedFbclid
+
+    if (fbclidFromQuery) {
+      window.localStorage.setItem(FBCLID_STORAGE_KEY, fbclidFromQuery)
+    }
+
+    setStoredFbclid(nextFbclid)
+  }, [])
 
   // Animaciones al hacer scroll
   useEffect(() => {
@@ -461,15 +508,28 @@ export default function BrocoSolutionsLanding() {
                       e.preventDefault()
                       const form = e.currentTarget as HTMLFormElement
                       const data = new FormData(form)
-
-                      const payload = {
+                      const fbclid = String(data.get("fbclid") || "").trim()
+                      const cookieFbp = getCookieValue("_fbp")
+                      const cookieFbc = getCookieValue("_fbc")
+                      const fallbackFbc = !cookieFbc && fbclid ? `fb.1.${Date.now()}.${fbclid}` : ""
+                      const rawPayload = {
                         name: String(data.get("name") || ""),
                         email: String(data.get("email") || ""),
+                        whatsapp: String(data.get("whatsapp") || ""),
                         company: String(data.get("company") || ""),
                         industry: String(data.get("industry") || ""),
                         budget: String(data.get("budget") || ""),
                         message: String(data.get("message") || ""),
+                        fbclid,
+                        fbc: cookieFbc || fallbackFbc,
+                        fbp: cookieFbp,
                         hp: String(data.get("hp") || ""), // honeypot
+                      }
+                      const parsed = contactFormSchema.safeParse(rawPayload)
+
+                      if (!parsed.success) {
+                        setSendStatus("error")
+                        return
                       }
 
                       setSending(true)
@@ -478,7 +538,7 @@ export default function BrocoSolutionsLanding() {
                         const res = await fetch("/api/contact", {
                           method: "POST",
                           headers: { "Content-Type": "application/json" },
-                          body: JSON.stringify(payload),
+                          body: JSON.stringify(parsed.data),
                         })
                         const json = await res.json()
                         if (!res.ok || !json.ok) throw new Error(json.error || "Error")
@@ -494,13 +554,26 @@ export default function BrocoSolutionsLanding() {
                   >
                     {/* Honeypot anti-bots (oculto a usuarios) */}
                     <input name="hp" className="hidden" tabIndex={-1} autoComplete="off" />
+                    <input name="fbclid" value={storedFbclid} readOnly hidden aria-hidden="true" />
+                    <input name="fbc" value="" readOnly hidden aria-hidden="true" />
+                    <input name="fbp" value="" readOnly hidden aria-hidden="true" />
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <Input name="name" placeholder="Nombre" className="modern-input" required />
                       <Input name="email" type="email" placeholder="Email" className="modern-input" required />
                     </div>
 
-                    <Input name="company" placeholder="Empresa" className="modern-input" />
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <Input name="company" placeholder="Empresa" className="modern-input" />
+                      <Input
+                        name="whatsapp"
+                        type="tel"
+                        placeholder="WhatsApp"
+                        className="modern-input"
+                        inputMode="tel"
+                        autoComplete="tel"
+                      />
+                    </div>
                     <div className="grid gap-4 md:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="contact-industry" className="text-white/80">
