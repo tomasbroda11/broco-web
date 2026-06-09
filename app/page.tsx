@@ -55,14 +55,13 @@ const contactFormSchema = z.object({
 
 const FBCLID_STORAGE_KEY = "broco.fbclid"
 
-const BUDGET_TRACKING = {
-  // Ajustar manualmente estos montos si cambian los rangos del formulario.
-  "USD 400 - 800": { qualifies: false, value: 400 },
-  "USD 800 - 2.000": { qualifies: true, value: 800 },
-  "USD 2.000 - 5.000": { qualifies: true, value: 2000 },
-  "USD 5.000 - 10.000": { qualifies: true, value: 5000 },
-  "USD +10.000": { qualifies: true, value: 10000 },
-} as const
+const BUDGET_MAP: Record<string, { qualifies: boolean; value: number }> = {
+  "USD 400 - 800":      { qualifies: false, value: 400 },
+  "USD 800 - 2.000":    { qualifies: true,  value: 800 },
+  "USD 2.000 - 5.000":  { qualifies: true,  value: 2000 },
+  "USD 5.000 - 10.000": { qualifies: true,  value: 5000 },
+  "USD +10.000":        { qualifies: true,  value: 10000 },
+};
 
 function createEventId() {
   return typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
@@ -563,7 +562,7 @@ export default function BrocoSolutionsLanding() {
                         setSendStatus("ok")
                         form.reset()
                         setBudgetValue("")
-                        const tracking = BUDGET_TRACKING[parsed.data.budget as keyof typeof BUDGET_TRACKING]
+                        const tracking = BUDGET_MAP[parsed.data.budget]
                         const query = new URLSearchParams({
                           eid: eventId,
                           q: tracking?.qualifies ? "1" : "0",
