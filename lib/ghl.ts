@@ -16,6 +16,7 @@ const CF = {
   fbclid: "JyRv9ebXbMVlRe12Zome",
   fbc: "zBimD8wPR3QTgJuCL0XP",
   fbp: "NLF5nKSnOfiUOqzXJlGO",
+  event_id: "VEpSKXSR2UmPPxSNseDb",
 } as const;
 
 function ghlHeaders() {
@@ -40,7 +41,7 @@ export type LeadInput = {
   fbclid?: string;
   fbc?: string; // _fbc
   fbp?: string; // _fbp
-  event_id?: string;
+  eventId?: string;
 };
 
 export async function pushLeadToGHL(lead: LeadInput) {
@@ -63,6 +64,7 @@ export async function pushLeadToGHL(lead: LeadInput) {
         { id: CF.fbclid, field_value: lead.fbclid ?? "" },
         { id: CF.fbc, field_value: lead.fbc ?? "" },
         { id: CF.fbp, field_value: lead.fbp ?? "" },
+        { id: CF.event_id, field_value: lead.eventId ?? "" },
       ],
     }),
   });

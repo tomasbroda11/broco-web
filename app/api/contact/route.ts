@@ -76,7 +76,7 @@ ${message}`;
         fbclid,
         fbc,
         fbp,
-        event_id,
+        eventId: event_id,
       });
     } catch (ghlError) {
       console.error("GHL push error", ghlError);
