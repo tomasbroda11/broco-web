@@ -83,7 +83,24 @@ export async function pushLeadToGHL(lead: LeadInput) {
       contactId,
     }),
   });
-  const oppData = await oppRes.json();
-  if (!oppRes.ok) throw new Error(`GHL oportunidad ${oppRes.status}: ${JSON.stringify(oppData)}`);
-  return { contactId, opportunityId: oppData.opportunity?.id as string | undefined };
+  const oppData: {
+    message?: string;
+    meta?: { existingId?: string };
+    opportunity?: { id?: string };
+  } = await oppRes.json();
+  if (!oppRes.ok) {
+    if (oppRes.status === 400 && oppData.message?.toLowerCase().includes("duplicate")) {
+      return {
+        contactId,
+        opportunityId: oppData.meta?.existingId,
+        duplicate: true,
+      };
+    }
+    throw new Error(`GHL oportunidad ${oppRes.status}: ${JSON.stringify(oppData)}`);
+  }
+  return {
+    contactId,
+    opportunityId: oppData.opportunity?.id,
+    duplicate: false,
+  };
 }
