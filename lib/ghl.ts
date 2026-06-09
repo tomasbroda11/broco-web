@@ -40,6 +40,7 @@ export type LeadInput = {
   fbclid?: string;
   fbc?: string; // _fbc
   fbp?: string; // _fbp
+  event_id?: string;
 };
 
 export async function pushLeadToGHL(lead: LeadInput) {

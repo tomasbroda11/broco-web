@@ -5,7 +5,7 @@ export const runtime = "nodejs"; // también anda en 'edge' si preferís
 
 export async function POST(req: Request) {
   try {
-    const { name, email, whatsapp, company, industry, budget, message, fbclid, fbc, fbp, hp } = await req.json();
+    const { name, email, whatsapp, company, industry, budget, message, fbclid, fbc, fbp, event_id, hp } = await req.json();
 
     // Honeypot anti-bots
     if (hp) return NextResponse.json({ ok: true });
@@ -76,6 +76,7 @@ ${message}`;
         fbclid,
         fbc,
         fbp,
+        event_id,
       });
     } catch (ghlError) {
       console.error("GHL push error", ghlError);

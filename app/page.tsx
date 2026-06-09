@@ -49,10 +49,26 @@ const contactFormSchema = z.object({
   fbclid: z.string().trim().optional(),
   fbc: z.string().trim().optional(),
   fbp: z.string().trim().optional(),
+  event_id: z.string().trim().min(1),
   hp: z.string().trim().optional(),
 })
 
 const FBCLID_STORAGE_KEY = "broco.fbclid"
+
+const BUDGET_TRACKING = {
+  // Ajustar manualmente estos montos si cambian los rangos del formulario.
+  "USD 400 - 800": { qualifies: false, value: 400 },
+  "USD 800 - 2.000": { qualifies: true, value: 800 },
+  "USD 2.000 - 5.000": { qualifies: true, value: 2000 },
+  "USD 5.000 - 10.000": { qualifies: true, value: 5000 },
+  "USD +10.000": { qualifies: true, value: 10000 },
+} as const
+
+function createEventId() {
+  return typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(36).slice(2)}`
+}
 
 function getCookieValue(name: string) {
   if (typeof document === "undefined") return ""
@@ -512,6 +528,7 @@ export default function BrocoSolutionsLanding() {
                       const cookieFbp = getCookieValue("_fbp")
                       const cookieFbc = getCookieValue("_fbc")
                       const fallbackFbc = !cookieFbc && fbclid ? `fb.1.${Date.now()}.${fbclid}` : ""
+                      const eventId = createEventId()
                       const rawPayload = {
                         name: String(data.get("name") || ""),
                         email: String(data.get("email") || ""),
@@ -523,6 +540,7 @@ export default function BrocoSolutionsLanding() {
                         fbclid,
                         fbc: cookieFbc || fallbackFbc,
                         fbp: cookieFbp,
+                        event_id: eventId,
                         hp: String(data.get("hp") || ""), // honeypot
                       }
                       const parsed = contactFormSchema.safeParse(rawPayload)
@@ -545,6 +563,13 @@ export default function BrocoSolutionsLanding() {
                         setSendStatus("ok")
                         form.reset()
                         setBudgetValue("")
+                        const tracking = BUDGET_TRACKING[parsed.data.budget as keyof typeof BUDGET_TRACKING]
+                        const query = new URLSearchParams({
+                          eid: eventId,
+                          q: tracking?.qualifies ? "1" : "0",
+                          val: String(tracking?.value ?? 0),
+                        })
+                        router.push(`/thank-you?${query.toString()}`)
                       } catch (err) {
                         setSendStatus("error")
                       } finally {
