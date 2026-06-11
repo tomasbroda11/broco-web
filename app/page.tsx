@@ -281,11 +281,11 @@ export default function BrocoSolutionsLanding() {
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-5 mb-12">
               <Button
-                onClick={() => navigateWithTransition("/brocoagro")}
+                onClick={() => scrollToSection("contacto")}
                 size="lg"
                 className="hero-cta hero-cta-primary group cursor-pointer"
               >
-                <span>Conocé BrocoAgro</span>
+                <span>Hagamos una auditoría</span>
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
