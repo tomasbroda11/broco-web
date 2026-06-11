@@ -591,8 +591,8 @@ export default function BrocoSolutionsLanding() {
                         autoComplete="tel"
                       />
                     </div>
-                    <div className="grid gap-4 md:grid-cols-2">
-                      <div className="space-y-2">
+                    <div className="grid gap-4 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+                      <div className="min-w-0 space-y-2">
                         <Label htmlFor="contact-industry" className="text-white/80">
                           Industria
                         </Label>
@@ -603,21 +603,35 @@ export default function BrocoSolutionsLanding() {
                           className="modern-input"
                         />
                       </div>
-                      <div className="space-y-2">
+                      <div className="min-w-0 space-y-2">
                         <Label htmlFor="contact-budget" className="text-white/80">
                           Presupuesto estimado
                         </Label>
                         <input type="hidden" name="budget" value={budgetValue} />
                         <Select value={budgetValue} onValueChange={setBudgetValue}>
-                          <SelectTrigger id="contact-budget" aria-label="Presupuesto estimado">
+                          <SelectTrigger
+                            id="contact-budget"
+                            aria-label="Presupuesto estimado"
+                            className="min-w-0 whitespace-nowrap [&>span]:truncate"
+                          >
                             <SelectValue placeholder="Seleccionar" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="USD 400 - 800">USD 400 - 800</SelectItem>
-                            <SelectItem value="USD 800 - 2.000">USD 800 - 2.000</SelectItem>
-                            <SelectItem value="USD 2.000 - 5.000">USD 2.000 - 5.000</SelectItem>
-                            <SelectItem value="USD 5.000 - 10.000">USD 5.000 - 10.000</SelectItem>
-                            <SelectItem value="USD +10.000">USD +10.000</SelectItem>
+                            <SelectItem value="USD 400 - 800" className="whitespace-nowrap">
+                              USD 400 - 800
+                            </SelectItem>
+                            <SelectItem value="USD 800 - 2.000" className="whitespace-nowrap">
+                              USD 800 - 2.000
+                            </SelectItem>
+                            <SelectItem value="USD 2.000 - 5.000" className="whitespace-nowrap">
+                              USD 2.000 - 5.000
+                            </SelectItem>
+                            <SelectItem value="USD 5.000 - 10.000" className="whitespace-nowrap">
+                              USD 5.000 - 10.000
+                            </SelectItem>
+                            <SelectItem value="USD +10.000" className="whitespace-nowrap">
+                              USD +10.000
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
