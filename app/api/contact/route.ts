@@ -1,11 +1,41 @@
 import { NextResponse } from "next/server";
 import { pushLeadToGHL } from "@/lib/ghl";
+import { getBudgetInfo } from "@/lib/budget";
+import { sendLeadToMeta } from "@/lib/meta";
 
 export const runtime = "nodejs"; // también anda en 'edge' si preferís
 
+type ContactPayload = {
+  name?: string;
+  email?: string;
+  whatsapp?: string;
+  company?: string;
+  industry?: string;
+  budget?: string;
+  message?: string;
+  fbclid?: string;
+  fbc?: string;
+  fbp?: string;
+  event_id?: string;
+  hp?: string;
+};
+
 export async function POST(req: Request) {
   try {
-    const { name, email, whatsapp, company, industry, budget, message, fbclid, fbc, fbp, event_id, hp } = await req.json();
+    const {
+      name,
+      email,
+      whatsapp,
+      company,
+      industry,
+      budget,
+      message,
+      fbclid,
+      fbc,
+      fbp,
+      event_id,
+      hp,
+    }: ContactPayload = await req.json();
 
     // Honeypot anti-bots
     if (hp) return NextResponse.json({ ok: true });
@@ -80,6 +110,28 @@ ${message}`;
       });
     } catch (ghlError) {
       console.error("GHL push error", ghlError);
+    }
+
+    const budgetInfo = getBudgetInfo(budget ?? "");
+    if (budgetInfo.qualifies) {
+      try {
+        const forwardedFor = req.headers.get("x-forwarded-for");
+        const clientIpAddress = forwardedFor?.split(",")[0]?.trim();
+
+        await sendLeadToMeta({
+          eventId: event_id ?? "",
+          eventSourceUrl: req.headers.get("referer") ?? undefined,
+          email,
+          whatsapp,
+          fbc,
+          fbp,
+          clientIpAddress,
+          clientUserAgent: req.headers.get("user-agent") ?? undefined,
+          value: budgetInfo.value,
+        });
+      } catch (metaError) {
+        console.error("Meta CAPI error", metaError);
+      }
     }
 
     return NextResponse.json({ ok: true });

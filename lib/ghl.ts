@@ -2,6 +2,8 @@
 // Empuja un lead a GoHighLevel: crea/actualiza el contacto y abre una oportunidad.
 // El token va en la env var GHL_TOKEN (nunca hardcodeado, nunca en el cliente).
 
+import { getBudgetInfo } from "@/lib/budget";
+
 const GHL_BASE = "https://services.leadconnectorhq.com";
 
 const LOCATION_ID = "i2OPO1GQskK2zGW8oSzL";
@@ -17,6 +19,13 @@ const CF = {
   fbc: "zBimD8wPR3QTgJuCL0XP",
   fbp: "NLF5nKSnOfiUOqzXJlGO",
   event_id: "VEpSKXSR2UmPPxSNseDb",
+} as const;
+
+const OPPORTUNITY_CF = {
+  empresa: "03UuYhBH9CGaPxFjpio4",
+  industria: "pqeHmfBbrKiyIPWS9JJY",
+  presupuesto: "TUrVJBiVGbpl24uERlNj",
+  whatsapp: "auCvMllHzdioikKyNNbV",
 } as const;
 
 function ghlHeaders() {
@@ -73,6 +82,40 @@ export async function pushLeadToGHL(lead: LeadInput) {
   const contactId: string | undefined = contactData.contact?.id;
   if (!contactId) throw new Error(`GHL no devolvió contactId: ${JSON.stringify(contactData)}`);
 
+  const opportunityCustomFields: Array<{
+    id: string;
+    field_value: string | number;
+  }> = [];
+  const company = lead.company?.trim();
+  const industry = lead.industry?.trim();
+  const budgetValue = getBudgetInfo(lead.budget ?? "").value;
+  const whatsappDigits = lead.phone?.replace(/\D/g, "") ?? "";
+
+  if (company) {
+    opportunityCustomFields.push({
+      id: OPPORTUNITY_CF.empresa,
+      field_value: company,
+    });
+  }
+  if (industry) {
+    opportunityCustomFields.push({
+      id: OPPORTUNITY_CF.industria,
+      field_value: industry,
+    });
+  }
+  if (budgetValue > 0) {
+    opportunityCustomFields.push({
+      id: OPPORTUNITY_CF.presupuesto,
+      field_value: budgetValue,
+    });
+  }
+  if (whatsappDigits) {
+    opportunityCustomFields.push({
+      id: OPPORTUNITY_CF.whatsapp,
+      field_value: Number(whatsappDigits),
+    });
+  }
+
   const oppRes = await fetch(`${GHL_BASE}/opportunities/`, {
     method: "POST",
     headers: ghlHeaders(),
@@ -83,6 +126,7 @@ export async function pushLeadToGHL(lead: LeadInput) {
       name: `${lead.name}${lead.company ? " - " + lead.company : ""}`,
       status: "open",
       contactId,
+      customFields: opportunityCustomFields,
     }),
   });
   const oppData: {

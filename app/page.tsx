@@ -33,6 +33,7 @@ import {
   Sprout,
 } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { getBudgetInfo } from "@/lib/budget"
 
 const contactFormSchema = z.object({
   name: z.string().trim().min(1, "Nombre requerido"),
@@ -54,14 +55,6 @@ const contactFormSchema = z.object({
 })
 
 const FBCLID_STORAGE_KEY = "broco.fbclid"
-
-const BUDGET_MAP: Record<string, { qualifies: boolean; value: number }> = {
-  "USD 400 - 800":      { qualifies: false, value: 400 },
-  "USD 800 - 2.000":    { qualifies: true,  value: 800 },
-  "USD 2.000 - 5.000":  { qualifies: true,  value: 2000 },
-  "USD 5.000 - 10.000": { qualifies: true,  value: 5000 },
-  "USD +10.000":        { qualifies: true,  value: 10000 },
-};
 
 function createEventId() {
   return typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
@@ -562,11 +555,11 @@ export default function BrocoSolutionsLanding() {
                         setSendStatus("ok")
                         form.reset()
                         setBudgetValue("")
-                        const tracking = BUDGET_MAP[parsed.data.budget]
+                        const tracking = getBudgetInfo(parsed.data.budget ?? "")
                         const query = new URLSearchParams({
                           eid: eventId,
-                          q: tracking?.qualifies ? "1" : "0",
-                          val: String(tracking?.value ?? 0),
+                          q: tracking.qualifies ? "1" : "0",
+                          val: String(tracking.value),
                         })
                         router.push(`/thank-you?${query.toString()}`)
                       } catch (err) {
