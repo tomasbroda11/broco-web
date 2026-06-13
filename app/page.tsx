@@ -430,11 +430,11 @@ export default function BrocoSolutionsLanding() {
       </section>
 
       {/* About */}
-      <section id="nosotros" className="py-32 relative overflow-hidden">
+      <section id="nosotros" className="scroll-mt-28 py-28 relative overflow-hidden md:scroll-mt-32 md:py-32">
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_18%_48%,rgba(127,90,240,0.08),transparent_32%),radial-gradient(circle_at_84%_58%,rgba(62,111,168,0.07),transparent_34%)]" />
-        <div className="container mx-auto px-4">
-          <div className="relative mx-auto max-w-6xl">
-            <div className="mb-10 text-center animate-on-scroll fade-in md:mb-14">
+        <div className="mx-auto w-full px-4 sm:px-6 lg:px-8">
+          <div className="relative mx-auto max-w-[1440px]">
+            <div className="mb-10 text-center animate-on-scroll fade-in md:mb-12">
               <h2 className="mx-auto max-w-4xl text-balance text-4xl font-bold leading-[1.08] tracking-[-0.03em] md:text-6xl">
                 <span className="text-white">Equipo compacto,</span>
                 <br />
@@ -446,33 +446,33 @@ export default function BrocoSolutionsLanding() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_38%,rgba(127,90,240,0.18),transparent_31%),radial-gradient(circle_at_88%_12%,rgba(62,111,168,0.13),transparent_28%)]" />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
-              <div className="relative grid lg:min-h-[610px] lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-                <div className="relative min-h-[420px] overflow-hidden sm:min-h-[500px] lg:min-h-0">
-                  <div className="pointer-events-none absolute bottom-[-8%] left-1/2 h-[78%] w-[84%] -translate-x-1/2 rounded-full bg-[#7F5AF0]/14 blur-3xl" />
+              <div className="relative grid lg:min-h-[720px] lg:grid-cols-[minmax(0,6fr)_minmax(0,7fr)] xl:min-h-[760px]">
+                <div className="relative min-h-[430px] overflow-hidden sm:min-h-[520px] lg:min-h-0">
+                  <div className="pointer-events-none absolute bottom-[-10%] left-1/2 h-[82%] w-[88%] -translate-x-1/2 rounded-full bg-[#7F5AF0]/16 blur-3xl" />
                   <Image
                     src="/tomi-cutout.png"
                     alt="Tomás Broda, Software Lead y asesor en inteligencia artificial"
                     fill
-                    sizes="(min-width: 1024px) 420px, 100vw"
-                    className="relative z-10 object-cover object-[50%_18%] drop-shadow-[0_18px_18px_rgba(0,0,0,0.24)] sm:object-[50%_16%] lg:object-[50%_12%]"
+                    sizes="(min-width: 1440px) 660px, (min-width: 1024px) 46vw, 100vw"
+                    className="relative z-10 object-cover object-[50%_17%] drop-shadow-[0_18px_18px_rgba(0,0,0,0.24)] sm:object-[50%_15%] lg:object-[50%_10%]"
                   />
                 </div>
 
-                <div className="flex flex-col justify-center border-t border-white/10 p-6 sm:p-9 lg:border-l lg:border-t-0 lg:p-12 xl:p-14">
-                  <div className="max-w-2xl">
-                    <p className="text-pretty text-sm font-semibold leading-6 text-[#A995F8]">
+                <div className="flex flex-col justify-center border-t border-white/10 p-7 sm:p-10 lg:border-l lg:border-t-0 lg:p-14 xl:p-16 2xl:p-20">
+                  <div className="max-w-3xl">
+                    <p className="text-pretty text-sm font-semibold leading-6 text-[#A995F8] sm:text-base">
                       Software Lead · AI Advisor · Docente universitario
                     </p>
-                    <h3 className="mt-3 text-balance text-4xl font-bold tracking-[-0.03em] text-white sm:text-5xl">
+                    <h3 className="mt-3 text-balance text-4xl font-bold tracking-[-0.03em] text-white sm:text-5xl lg:mt-4 lg:text-6xl">
                       Tomás Broda
                     </h3>
-                    <p className="mt-7 text-pretty text-lg leading-8 text-white/85 sm:text-xl sm:leading-9">
+                    <p className="mt-7 text-pretty text-lg leading-8 text-white/85 sm:text-xl sm:leading-9 lg:mt-9 lg:text-[1.375rem] lg:leading-10">
                       Lidera los proyectos de Broco con mirada técnica, criterio de negocio y foco en soluciones que
                       realmente se puedan implementar. Constantemente investigando, probando e incorporando nuevas tecnologías para llevar
                       innovación real
                     </p>
                                         
-                    <div className="mt-8 flex flex-wrap gap-2">
+                    <div className="mt-8 flex flex-wrap gap-2.5 lg:mt-10">
                       {[
                         "Ingeniero en Sistemas - UTN",
                         "Docente de Inteligencia Artificial en UCA",
@@ -481,7 +481,7 @@ export default function BrocoSolutionsLanding() {
                       ].map((credential) => (
                         <span
                           key={credential}
-                          className="rounded-full bg-white/[0.07] px-3.5 py-2 text-sm font-medium text-white/78 ring-1 ring-inset ring-white/10"
+                          className="rounded-full bg-white/[0.07] px-3.5 py-2 text-sm font-medium text-white/78 ring-1 ring-inset ring-white/10 lg:px-4 lg:py-2.5"
                         >
                           {credential}
                         </span>
