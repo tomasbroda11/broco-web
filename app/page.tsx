@@ -433,7 +433,7 @@ export default function BrocoSolutionsLanding() {
       <section id="nosotros" className="scroll-mt-28 py-28 relative overflow-hidden md:scroll-mt-32 md:py-32">
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_18%_48%,rgba(127,90,240,0.08),transparent_32%),radial-gradient(circle_at_84%_58%,rgba(62,111,168,0.07),transparent_34%)]" />
         <div className="mx-auto w-full px-4 sm:px-6 lg:px-8">
-          <div className="relative mx-auto max-w-[1440px]">
+          <div className="relative mx-auto max-w-[1320px]">
             <div className="mb-10 text-center animate-on-scroll fade-in md:mb-12">
               <h2 className="mx-auto max-w-4xl text-balance text-4xl font-bold leading-[1.08] tracking-[-0.03em] md:text-6xl">
                 <span className="text-white">Equipo compacto,</span>
@@ -446,21 +446,21 @@ export default function BrocoSolutionsLanding() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_38%,rgba(127,90,240,0.18),transparent_31%),radial-gradient(circle_at_88%_12%,rgba(62,111,168,0.13),transparent_28%)]" />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
-              <div className="relative grid lg:min-h-[720px] lg:grid-cols-[minmax(0,6fr)_minmax(0,7fr)] xl:min-h-[760px]">
+              <div className="relative grid lg:min-h-[680px] lg:grid-cols-[minmax(0,6fr)_minmax(0,7fr)] xl:min-h-[700px]">
                 <div className="relative min-h-[430px] overflow-hidden sm:min-h-[520px] lg:min-h-0">
                   <div className="pointer-events-none absolute bottom-[-10%] left-1/2 h-[82%] w-[88%] -translate-x-1/2 rounded-full bg-[#7F5AF0]/16 blur-3xl" />
                   <Image
                     src="/tomi-cutout.png"
                     alt="Tomás Broda, Software Lead y asesor en inteligencia artificial"
                     fill
-                    sizes="(min-width: 1440px) 660px, (min-width: 1024px) 46vw, 100vw"
+                    sizes="(min-width: 1320px) 610px, (min-width: 1024px) 46vw, 100vw"
                     className="relative z-10 object-cover object-[50%_17%] drop-shadow-[0_18px_18px_rgba(0,0,0,0.24)] sm:object-[50%_15%] lg:object-[50%_10%]"
                   />
                 </div>
 
-                <div className="flex flex-col justify-center border-t border-white/10 p-7 sm:p-10 lg:border-l lg:border-t-0 lg:p-14 xl:p-16 2xl:p-20">
+                <div className="flex flex-col justify-center border-t border-white/10 p-7 sm:p-10 lg:border-l lg:border-t-0 lg:p-12 xl:p-14 2xl:p-16">
                   <div className="max-w-3xl">
-                    <p className="text-pretty text-sm font-semibold leading-6 text-[#A995F8] sm:text-base">
+                    <p className="text-pretty text-base font-semibold leading-6 text-[#A995F8] lg:text-lg">
                       Software Lead · AI Advisor · Docente universitario
                     </p>
                     <h3 className="mt-3 text-balance text-4xl font-bold tracking-[-0.03em] text-white sm:text-5xl lg:mt-4 lg:text-6xl">
@@ -475,19 +475,73 @@ export default function BrocoSolutionsLanding() {
                     <div className="mt-8 flex flex-wrap gap-2.5 lg:mt-10">
                       {[
                         "Ingeniero en Sistemas - UTN",
-                        "Docente de Inteligencia Artificial en UCA",
                         "Capacitador en IA en empresas",
+                        "Docente de Inteligencia Artificial en UCA",
                         "Innovador",
                       ].map((credential) => (
                         <span
                           key={credential}
-                          className="rounded-full bg-white/[0.07] px-3.5 py-2 text-sm font-medium text-white/78 ring-1 ring-inset ring-white/10 lg:px-4 lg:py-2.5"
+                          className="rounded-full bg-white/[0.07] px-3.5 py-2 text-[0.9375rem] font-medium text-white/78 ring-1 ring-inset ring-white/10 lg:px-4 lg:py-2.5"
                         >
                           {credential}
                         </span>
                       ))}
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="animate-on-scroll fade-in relative mt-8 overflow-hidden rounded-2xl bg-[#121218] ring-1 ring-inset ring-white/10 md:mt-10 lg:mt-12">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_38%,rgba(127,90,240,0.18),transparent_31%),radial-gradient(circle_at_12%_12%,rgba(62,111,168,0.13),transparent_28%)]" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+
+              <div className="relative grid lg:min-h-[680px] lg:grid-cols-[minmax(0,7fr)_minmax(0,6fr)] xl:min-h-[700px]">
+                <div className="order-2 flex flex-col justify-center border-t border-white/10 p-7 sm:p-10 lg:order-1 lg:border-r lg:border-t-0 lg:p-12 xl:p-14 2xl:p-16">
+                  <div className="max-w-3xl">
+                    <p className="text-pretty text-base font-semibold leading-6 text-[#A995F8] lg:text-lg">
+                      AI Agents Engineer · HealthTech Solutions
+                    </p>
+                    <h3 className="mt-3 text-balance text-4xl font-bold tracking-[-0.03em] text-white sm:text-5xl lg:mt-4 lg:text-6xl">
+                      Francisco Velazquez
+                    </h3>
+                    <p className="mt-7 text-pretty text-lg leading-8 text-white/85 sm:text-xl sm:leading-9 lg:mt-9 lg:text-[1.375rem] lg:leading-10">
+                      Diseña e implementa agentes de inteligencia artificial para empresas, con foco en automatizar
+                      procesos reales y mejorar la operación diaria. Experiencia en soluciones tecnológicas para el rubro salud y
+                      automatización de flujos críticos.
+                    </p>
+                    
+                    <div className="mt-8 space-y-4 lg:mt-10">
+                      <div>
+                        <span
+                          className="rounded-full bg-white/[0.07] px-3.5 py-2 text-[0.9375rem] font-medium text-white/78 ring-1 ring-inset ring-white/10 lg:px-4 lg:py-2.5"
+                        >
+                          Ingeniero en Sistemas
+                        </span>
+                      </div>
+                      <div className="flex flex-wrap gap-2.5">
+                        {["Automatización de procesos", "Agentes de IA", "Integraciones"].map((credential) => (
+                          <span
+                            key={credential}
+                            className="rounded-full bg-white/[0.07] px-3.5 py-2 text-[0.9375rem] font-medium text-white/78 ring-1 ring-inset ring-white/10 lg:px-4 lg:py-2.5"
+                          >
+                            {credential}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="order-1 relative min-h-[430px] overflow-hidden sm:min-h-[520px] lg:order-2 lg:min-h-0">
+                  <div className="pointer-events-none absolute bottom-[-10%] left-1/2 h-[82%] w-[88%] -translate-x-1/2 rounded-full bg-[#7F5AF0]/16 blur-3xl" />
+                  <Image
+                    src="/fran.png"
+                    alt="Francisco Velazquez, ingeniero de agentes de inteligencia artificial"
+                    fill
+                    sizes="(min-width: 1320px) 610px, (min-width: 1024px) 46vw, 100vw"
+                    className="relative z-10 scale-[1.88] object-contain object-[50%_76%] drop-shadow-[0_18px_18px_rgba(0,0,0,0.24)] sm:scale-[1.82] lg:scale-[1.44] lg:object-[50%_72%]"
+                  />
                 </div>
               </div>
             </div>
