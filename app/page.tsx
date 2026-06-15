@@ -450,7 +450,7 @@ export default function BrocoSolutionsLanding() {
                 <div className="relative min-h-[430px] overflow-hidden sm:min-h-[520px] lg:min-h-0">
                   <div className="pointer-events-none absolute bottom-[-10%] left-1/2 h-[82%] w-[88%] -translate-x-1/2 rounded-full bg-[#7F5AF0]/16 blur-3xl" />
                   <Image
-                    src="/tomi-cutout.png"
+                    src="/tomas.png"
                     alt="Tomás Broda, Software Lead y asesor en inteligencia artificial"
                     fill
                     sizes="(min-width: 1320px) 610px, (min-width: 1024px) 46vw, 100vw"
