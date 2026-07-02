@@ -33,6 +33,7 @@ import {
 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { getBudgetInfo } from "@/lib/budget"
+import { VslSection } from "@/components/vsl-section"
 
 const contactFormSchema = z.object({
   name: z.string().trim().min(1, "Nombre requerido"),
@@ -299,6 +300,8 @@ export default function BrocoSolutionsLanding() {
           </div>
         </div>
       </section>
+
+      <VslSection />
 
       {/* Services */}
       <section id="servicios" className="py-32 relative">
