@@ -44,7 +44,7 @@ const DEFAULT_ITEMS: ProjectCarouselItem[] = [
     logoSrc: "/brand/projects/ColegioLogo.png",
     logoAlt: "Logo Colegio de Odontólogos",
     category: "Desarrollo a Medida",
-    href: "https://colegio-odontologos.brocosolutions.com/",
+    href: "https://www.odontologossantafe2.org.ar/",
   },
   {
     id: 3,
