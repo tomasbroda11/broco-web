@@ -8,9 +8,48 @@ import { ArrowRight, Play } from "lucide-react"
 const YOUTUBE_ID = "X0tP7M6QpgQ"
 const YOUTUBE_URL = `https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0`
 
-export function VslSection() {
+export function VslVideo() {
   const [showVideo, setShowVideo] = useState(false)
 
+  return (
+    <div className="relative aspect-video rounded-[12px] overflow-hidden border border-white/10 bg-white/5 shadow-lg shadow-black/20">
+      {showVideo ? (
+        <iframe
+          src={YOUTUBE_URL}
+          title="Broco Solutions - 51 segundos para entender qué hacemos"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full"
+          loading="lazy"
+        />
+      ) : (
+        <button
+          type="button"
+          onClick={() => setShowVideo(true)}
+          className="absolute inset-0 w-full h-full group cursor-pointer"
+          aria-label="Reproducir video"
+        >
+          <Image
+            src="/vsl-thumbnail.png"
+            alt="Broco Solutions - Video thumbnail"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1280px) 100vw, 1024px"
+            priority={false}
+          />
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#7F5AF0]/90 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:bg-[#7F5AF0] shadow-lg shadow-[#7F5AF0]/30">
+              <Play className="w-6 h-6 md:w-8 md:h-8 text-white fill-white ml-0.5" />
+            </div>
+          </div>
+        </button>
+      )}
+    </div>
+  )
+}
+
+export function VslSection() {
   const handleCtaClick = () => {
     const el = document.getElementById("contacto")
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
@@ -33,40 +72,7 @@ export function VslSection() {
             </h2>
           </div>
 
-          <div className="relative aspect-video rounded-[12px] overflow-hidden border border-white/10 bg-white/5 shadow-lg">
-            {showVideo ? (
-              <iframe
-                src={YOUTUBE_URL}
-                title="Broco Solutions - 51 segundos para entender qué hacemos"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full"
-                loading="lazy"
-              />
-            ) : (
-              <button
-                type="button"
-                onClick={() => setShowVideo(true)}
-                className="absolute inset-0 w-full h-full group cursor-pointer"
-                aria-label="Reproducir video"
-              >
-                <Image
-                  src="/vsl-thumbnail.png"
-                  alt="Broco Solutions - Video thumbnail"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 880px) 100vw, 880px"
-                  priority={false}
-                />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#7F5AF0]/90 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:bg-[#7F5AF0] shadow-lg shadow-[#7F5AF0]/30">
-                    <Play className="w-6 h-6 md:w-8 md:h-8 text-white fill-white ml-0.5" />
-                  </div>
-                </div>
-              </button>
-            )}
-          </div>
+          <VslVideo />
 
           <div className="text-center">
             <Button

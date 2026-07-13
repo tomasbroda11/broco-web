@@ -33,7 +33,7 @@ import {
 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { getBudgetInfo } from "@/lib/budget"
-import { VslSection } from "@/components/vsl-section"
+import { VslVideo } from "@/components/vsl-section"
 
 const contactFormSchema = z.object({
   name: z.string().trim().min(1, "Nombre requerido"),
@@ -241,7 +241,7 @@ export default function BrocoSolutionsLanding() {
       <section
         ref={heroRef}
         id="inicio"
-        className="home-hero relative min-h-screen flex items-center justify-center overflow-hidden pt-32"
+        className="home-hero relative min-h-screen overflow-hidden pt-24 pb-12"
       >
         <div className="home-hero-bg absolute inset-0 animated-bg pointer-events-none">
           <div className="floating-orbs home-hero-orbs" />
@@ -249,7 +249,7 @@ export default function BrocoSolutionsLanding() {
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 text-center">
-          <div className="space-y-8">
+          <div className="space-y-6">
             <div className="inline-flex items-center space-x-2 glass-badge px-4 py-2 rounded-full text-sm leading-6">
               <Sparkles className="h-4 w-4 text-[#7F5AF0]" />
               <span>Tecnología que transforma empresas</span>
@@ -279,7 +279,7 @@ export default function BrocoSolutionsLanding() {
               Sistemas a medida, automatización, IA y soluciones en la nube para empresas que buscan resultados reales
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-5 mb-12">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-5">
               <Button
                 onClick={() => scrollToSection("contacto")}
                 size="lg"
@@ -298,10 +298,12 @@ export default function BrocoSolutionsLanding() {
               </Button>
             </div>
           </div>
+
+          <div className="mt-8 mx-auto w-full sm:max-w-[min(82vw,1180px)]">
+            <VslVideo />
+          </div>
         </div>
       </section>
-
-      <VslSection />
 
       {/* Services */}
       <section id="servicios" className="py-32 relative">
