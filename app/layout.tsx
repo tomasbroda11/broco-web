@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Montserrat, Open_Sans, Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google"
 import { GoogleTagManager } from "@next/third-parties/google"
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -53,7 +54,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <GoogleTagManager gtmId="GTM-NRS55CQ5" />
-      <body className={`${inter.className} ${montserrat.variable} ${openSans.variable} ${bricolage.variable} ${geist.variable} ${geistMono.variable}`}>{children}</body>
+      <body className={`${inter.className} ${montserrat.variable} ${openSans.variable} ${bricolage.variable} ${geist.variable} ${geistMono.variable}`}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
